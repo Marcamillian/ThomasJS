@@ -43,7 +43,7 @@ GameEngine.prototype = function(){
 	// update the movements
 	update = function(){
 		advGameTime();
-		alert(globalTime);
+		//alert(globalTime);
 		
 		draw();
 		

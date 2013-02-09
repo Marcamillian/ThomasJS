@@ -10,7 +10,7 @@ function object(o){
 // STANDARD FUNCTIONS
 function create(parent){
 	var F = function(){};	// create an empty function
-	F.prototype = parent;	// set the parent prototype
+	F.prototype = parent.prototype;	// set the parent prototype
 	return new F();			// give back this object with the right prototype 
 }
 
@@ -27,7 +27,7 @@ var init = function(){
 	var engine1 = new GameEngine();
 	engine1.setUp();
 	
-	var player1 = new GameObject();
+	var player1 = create(GameObject);
 	
 	player1.speak();
 	

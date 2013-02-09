@@ -7,57 +7,55 @@ GameObject.prototype = function(){
 	
 	// IMAGE ===================================================
 	
-	this.image;
+	var image;
 	
 	
 	
 	// MOVEMENT ================================================
 	
-	this.posX;
-	this.posY;
-	this.height = 50;
-	this.width = 50;
+	var posX;
+	var posY;
+	var height = 50;
+	var width = 50;
 	
 	
 	
 	// ANIMATION ================================================
 	
-	this.animation;
-	this.frame;
-	this.frameTime;
-	this.facing; // 0 == right way round , 1 == flipped
+	var animation;
+	var frame;
+	var frameTime;
+	var facing; // 0 == right way round , 1 == flipped
 	
 	
-	this.flip = new Array(	function(ctx){
+	var flip = new Array(	function(ctx){
 							},
 							function(ctx){	ctx.scale(-1,1);
 							} 
 						);
-	this.animationData = new Array;
+	var animationData = new Array;
 	// each animation has a new Array ( Frame Rate [ms] , #Frames, Looping?)
-	this.animationData.push(new Array(300, 1, true));
-	
-	
+	animationData.push(new Array(300, 1, true));
 	
 	
 	// ============================================================
 	
-	this.setUp = function(){
-		this.posX = 20;
-		this.posY = 20;
+	setUp = function(){
+		posX = 20;
+		posY = 20;
 		
-		this.animation = 0;
-		this.frame = 0;
-		this.frameTime = 0;
-		this.facing = 0;
-		
-	}
-	
-	this.update = function(){
+		animation = 0;
+		frame = 0;
+		frameTime = 0;
+		facing = 0;
 		
 	}
 	
-	this.draw = function(ctx){
+	update = function(){
+		
+	}
+	
+	draw = function(ctx){
 		var relPosX = posX; // - view ?
 		var relPosY = posY;
 		
@@ -71,15 +69,15 @@ GameObject.prototype = function(){
 		ctx.restore();
 	}
 	
-	this.isVisible = function(){
+	isVisible = function(){
 		
 	}
 	
-	this.animate = function(){
+	animate = function(){
 		// fill in the stuff here
 	}
 	
-	this.speak = function(){
+	speak = function(){
 		
 		alert("say soemthing dummy");
 	}
