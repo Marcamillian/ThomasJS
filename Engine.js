@@ -27,7 +27,7 @@ var init = function(){
 	var engine1 = new GameEngine();
 	engine1.setUp();
 	
-	var player1 = new GameObject;
+	var player1 = new GameObject();
 	
 	player1.speak();
 	

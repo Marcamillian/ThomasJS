@@ -1,7 +1,6 @@
 var GameObject = function(){
 	
 	
-	
 }
 
 GameObject.prototype = function(){
