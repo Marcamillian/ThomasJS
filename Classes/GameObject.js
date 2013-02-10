@@ -1,22 +1,16 @@
-var GameObject = function(){
-	
-	
-}
-
-GameObject.prototype = function(){
+var GameObject = function(image, pos_x, pos_y, _width, _height){
 	
 	// IMAGE ===================================================
 	
-	var image;
-	
+	var image = image;
 	
 	
 	// MOVEMENT ================================================
 	
-	var posX;
-	var posY;
-	var height = 50;
-	var width = 50;
+	var posX = pos_x;
+	var posY = pos_y;
+	var height = _height;
+	var width = _width;
 	
 	
 	
@@ -37,13 +31,11 @@ GameObject.prototype = function(){
 	// each animation has a new Array ( Frame Rate [ms] , #Frames, Looping?)
 	animationData.push(new Array(300, 1, true));
 	
+}
+
+GameObject.prototype = function(){
 	
-	// ============================================================
-	
-	setUp = function(){
-		posX = 20;
-		posY = 20;
-		
+	setUp = function(){		
 		animation = 0;
 		frame = 0;
 		frameTime = 0;
@@ -74,7 +66,7 @@ GameObject.prototype = function(){
 	}
 	
 	animate = function(){
-		// fill in the stuff here
+		
 	}
 	
 	speak = function(){

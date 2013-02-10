@@ -1,19 +1,15 @@
 var GameEngine = function(){
 
-}
-
-GameEngine.prototype = function(){
-	
 	var inheritVar1 = "something";
-	var inheritVar2 = "something else"
 	
 	// ============== VARIABLES ==================
 	
 	// IMPORTANT DRAWING STUFF
-	var WIDTH;
-	var HEIGHT;
-	var canvas;
-	var ctx;
+	canvas = document.getElementById("game-canvas");
+	ctx = canvas.getContext("2d");
+		
+	WIDTH = canvas.width;
+	HEIGHT = canvas.height;
 	
 	// TIMING STUFF
 	var dt = 0;
@@ -21,9 +17,10 @@ GameEngine.prototype = function(){
 	
 	// OBJECT HANDELLING
 	var objectStack = new Array;
-	
-	
-	// ============== METHODS ===================
+
+}
+
+GameEngine.prototype = function(){
 	
 	// CORE METHODS
 	
@@ -32,12 +29,6 @@ GameEngine.prototype = function(){
 		dt = 0;
 		gameTime = null;
 		
-		canvas = document.getElementById("game-canvas");
-		ctx = canvas.getContext("2d");
-		
-		WIDTH = canvas.width;
-		HEIGHT = canvas.height;
-		
 	}
 	
 	// update the movements
@@ -45,7 +36,9 @@ GameEngine.prototype = function(){
 		advGameTime();
 		//alert(globalTime);
 		
-		draw();
+		for (var i=0 ; i < objectStack.length ; i++){
+			objectStack[i].draw(ctx);
+		}
 		
 	}
 	
@@ -73,6 +66,9 @@ GameEngine.prototype = function(){
 		globalTime = currentTime;
 	}
 	
+	addObject = function (object){
+		obejectStack.push(object);
+	}
 	
 	// OTHER METHODS
 	
@@ -80,17 +76,13 @@ GameEngine.prototype = function(){
 		alert(inheritVar1);
 	}
 	
-	talk2 = function(){
-		alert(inheritVar2);
-	}
-	
 	
 	// PUBLIC METHODS
 	return{
 		talk1:talk1,
-		talk2:talk2,
 		setUp:setUp,
-		update:update
+		update:update,
+		addObject:addObject,
 	}
 	
 }();

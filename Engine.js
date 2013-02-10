@@ -1,12 +1,4 @@
 
-/*	CROCKFORD TRUE PROTOTYPICAL FORMULATION
-function object(o){
-	function F(){}
-	F.prototype = o;
-	return new F;
-}
-*/
-
 // STANDARD FUNCTIONS
 function create(parent){
 	var F = function(){};	// create an empty function
@@ -24,12 +16,10 @@ houseImg.src = 'Assets/House.png';
 
 var init = function(){
 	
-	var engine1 = new GameEngine();
-	engine1.setUp();
+	var engine1 = create(GameEngine);
 	
-	var player1 = create(GameObject);
-	
-	player1.speak();
+	//engine1.addObeject(new GameObject(houseImg, 0, 0, 2400, 728));
+	engine1.addObject(charSprite, 20, 20 , 128, 256);
 	
 	return setInterval(engine1.update, 33);
 	
