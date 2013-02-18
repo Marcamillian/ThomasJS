@@ -1,4 +1,7 @@
 var GameEngine = function(){
+	
+	// GET ALL THE IMAGES
+	var backgroundSprite = 
 
 }
 
@@ -14,6 +17,8 @@ GameEngine.prototype = function(){
 	var HEIGHT;
 	var canvas;
 	var ctx;
+	
+	var camera;
 	
 	// TIMING STUFF
 	var dt = 0;
@@ -37,6 +42,8 @@ GameEngine.prototype = function(){
 		
 		WIDTH = canvas.width;
 		HEIGHT = canvas.height;
+		
+		camera = new GameCamera(ctx);
 		
 	}
 	
