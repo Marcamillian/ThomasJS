@@ -1,7 +1,4 @@
 var GameEngine = function(){
-	
-	// GET ALL THE IMAGES
-	var backgroundSprite = 
 
 }
 
@@ -44,6 +41,8 @@ GameEngine.prototype = function(){
 		HEIGHT = canvas.height;
 		
 		camera = new GameCamera(ctx);
+		
+		background = new GameObject()
 		
 	}
 	

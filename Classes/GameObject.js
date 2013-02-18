@@ -1,8 +1,4 @@
-var GameObject = function(){
-	
-}
-
-GameObject.prototype = function(){
+var GameObject = function(image, posX, posY ){
 	
 	// IMAGE
 	var image;
@@ -28,6 +24,10 @@ GameObject.prototype = function(){
 	var animationData = new Array;
 	// each animation has a new Array ( Frame Rate [ms] , #Frames, Looping?)
 	animationData.push(new Array(300, 1, true));
+	
+}
+
+GameObject.prototype = function(){
 	
 	setUp();
 	
