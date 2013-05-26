@@ -2,6 +2,30 @@ var GameObject = function(){
 	
 }
 
+GameObject.prototype = {
+	
+	images:1, // Array of all the character images in the game - ordered into an xml document?
+	
+	
+	setup:function(/*_image,*/ _dims, _color){
+		
+		//this.image = _image;
+		this.dims = _dims;
+		this.color = _color;
+	},
+	
+	draw:function(ctx){
+		
+		ctx.save();
+		ctx.fillStyle = this.color;
+		ctx.translate(this.dims[0], this.dims[1]);
+		ctx.fillRect(this.dims[2]/2, this.dims[3]/2, this.dims[2], this.dims[3]);
+		ctx.restore()
+	}
+	
+}
+
+/*
 GameObject.prototype = function(){
 	
 	// IMAGE
@@ -66,3 +90,4 @@ GameObject.prototype = function(){
 	}
 	
 }();
+*/
