@@ -9,10 +9,15 @@ GameCamera.prototype = {
 		this.dims = _dims; // worldDims -- world x,y - frame scale
 		this.outputDims = _outDims;
 		// add in some output dims for multiple cameras
-		
+		this.screenObjs = 0;
 	},
 	
 	draw: function(_ctx, _objects){
+		
+		if (this.screenObjs != _objects.length){
+			this.screenObjs = _objects.length;
+			alert("objects on screen : " + this.screenObjs);
+		}
 		
 		// find the center of where we will be drawing on the canvas
 		var outputCorner = [0,0];

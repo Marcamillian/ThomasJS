@@ -12,7 +12,7 @@ var ThomasJS = {
 		this.objManager.setup();
 		
 		this.camera = Object.create(GameCamera.prototype);
-		this.camera.setup([0, 0, this.WIDTH, this.HEIGHT], [200, 100, 300, 200]);
+		this.camera.setup([0, 0, this.WIDTH, this.HEIGHT], [this.WIDTH/2, this.HEIGHT/2, this.WIDTH, this.HEIGHT]);
 		
 		this.inputManager = Object.create(InputManager.prototype);
 		this.inputManager.setup(this.camera);
@@ -41,9 +41,13 @@ var ThomasJS = {
 	},
 	
 	gameLoop: function(){
-		
-		var updateObjects = ThomasJS.objManager.update();
-		ThomasJS.camera.draw(ThomasJS.ctx, updateObjects);
+		/*
+		ThomasJS.objManager.update();
+		var viewObjects = ThomasJS.objManager.getObjects(ThomasJS.camera.outputDims);
+		ThomasJS.camera.draw(ThomasJS.ctx, viewObjects);
+		*/
+		var viewObjects = ThomasJS.objManager.update();
+		ThomasJS.camera.draw(ThomasJS.ctx, viewObjects);
 		
 	}
 	
