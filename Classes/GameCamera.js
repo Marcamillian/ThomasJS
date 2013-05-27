@@ -1,23 +1,18 @@
-var GameCamera = function(canvas){
-	
-	var posX = 0;
-	var posY = 0;
-	
-	var WIDTH = canvas.width;
-	var HEIGHT = canvas.height;
-	
-	
+var GameCamera = function(){
 	
 }
 
-GameCamera.prototype = function(){
+GameCamera.prototype = {
 	
-	this.drawView = function(ctx, objects){
-		// accesses each object and draws it if its in the cameras view
+	init: function(_dims){
+		
+		this.dims = _dims;
+		
+	}
+	
+	draw: function(_ctx, _objects){
 		
 		
 	}
 	
-	
-	
-}();
+}

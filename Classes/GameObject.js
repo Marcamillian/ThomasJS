@@ -21,8 +21,11 @@ GameObject.prototype = {
 		ctx.translate(this.dims[0], this.dims[1]);
 		ctx.fillRect(this.dims[2]/2, this.dims[3]/2, this.dims[2], this.dims[3]);
 		ctx.restore()
-	}
+	},
 	
+	update:function(){
+		
+	}
 }
 
 /*

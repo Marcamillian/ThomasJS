@@ -12,10 +12,11 @@ ObjectManager.prototype = {
 		this.objects.push(_object);
 	},
 	
-	gameLoop: function(){
+	gameLoop: function(ctx){
 		
 		for ( var i=0; i < this.objects.length; i++){
 			this.objects[i].update();
+			this.objects[i].draw(ctx);
 		}
 		
 	}, 
