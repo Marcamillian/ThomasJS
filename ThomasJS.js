@@ -11,18 +11,29 @@ var ThomasJS = {
 		this.objManager = Object.create(ObjectManager.prototype);
 		this.objManager.setup();
 		
-		// initalise the gameObjects
+		this.camera = Object.create(GameCamera.prototype);
+		this.camera.setup([50, 0, this.WIDTH, this.HEIGHT]);
 		
-		var test = Object.create(GameObject.prototype);
-		test.setup([40,40, 20, 20], 'red');
+		this.inputManager = Object.create(InputManager.prototype);
+		this.inputManager.setup(this.camera);
+		
+		document.addEventListener('keydown', ThomasJS.inputManager.input, true);
+		
+		
+		// initalise the gameObjects
 		
 		var player = Object.create(PlayerObject.prototype);
 		player.setup([40,40, 20, 20], 'red');
 		this.objManager.addObject(player);
 		
+		var midPoint = Object.create(GameObject.prototype);
+		midPoint.setup([0,0, 2, 2], 'green');
+		this.objManager.addObject(midPoint);
+		
 		var enemy = Object.create(GameObject.prototype);
-		enemy.setup([50, 50 , 20 , 20], 'blue');
+		enemy.setup([50, 80 , 20 , 20], 'blue');
 		this.objManager.addObject(enemy);
+		
 		
 		// set the loop
 		setInterval(ThomasJS.gameLoop, 33);
@@ -31,17 +42,8 @@ var ThomasJS = {
 	
 	gameLoop: function(){
 		
-		ThomasJS.clearCanvas();
-		ThomasJS.objManager.gameLoop(ThomasJS.ctx);
-		
-	}, 
-	
-	clearCanvas: function(){
-		
-		this.ctx.save();
-		this.ctx.fillStyle = 'white';
-		this.ctx.fillRect(0,0,this.WIDTH, this.HEIGHT);
-		this.ctx.restore();
+		var updateObjects = ThomasJS.objManager.update();
+		ThomasJS.camera.draw(ThomasJS.ctx, updateObjects);
 		
 	}
 	

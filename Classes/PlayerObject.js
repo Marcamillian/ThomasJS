@@ -7,5 +7,5 @@ PlayerObject.prototype.update = function(){
 };
 
 PlayerObject.prototype.movement = function(){
-	this.dims[0] += 4;
+	//this.dims[0] += 4;
 };
