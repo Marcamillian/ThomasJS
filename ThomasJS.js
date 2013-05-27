@@ -12,7 +12,7 @@ var ThomasJS = {
 		this.objManager.setup();
 		
 		this.camera = Object.create(GameCamera.prototype);
-		this.camera.setup([50, 0, this.WIDTH, this.HEIGHT]);
+		this.camera.setup([0, 0, this.WIDTH, this.HEIGHT], [200, 100, 300, 200]);
 		
 		this.inputManager = Object.create(InputManager.prototype);
 		this.inputManager.setup(this.camera);

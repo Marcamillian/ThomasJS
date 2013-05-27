@@ -4,40 +4,64 @@ var GameCamera = function(){
 
 GameCamera.prototype = {
 	
-	setup: function(_dims){
+	setup: function(_dims, _outDims){
 		
-		this.dims = _dims; // worldDims
+		this.dims = _dims; // worldDims -- world x,y - frame scale
+		this.outputDims = _outDims;
 		// add in some output dims for multiple cameras
 		
 	},
 	
 	draw: function(_ctx, _objects){
 		
-		this.clearCanvas(_ctx);
+		// find the center of where we will be drawing on the canvas
+		var outputCorner = [0,0];
+		outputCorner[0] = this.outputDims[0] - this.outputDims[2]/2; // viewPos top left x relative to the viewPos center
+		outputCorner[1] = this.outputDims[1] - this.outputDims[3]/2; // viewPos top left y relative to the viewPos center
 		
+		//  ****************  move to the center of the view  *******************
+		
+		_ctx.save();
+		_ctx.translate(this.outputDims[0], this.outputDims[1]); 
+
+		this.clearView(_ctx);	
+
+		_ctx.strokeStyle = 'red';
+		_ctx.strokeRect(-this.outputDims[2]/2, -this.outputDims[3]/2, this.outputDims[2], this.outputDims[3]); // - move to the right place
+		
+		// move to the center of the view & draw the center
+		_ctx.strokeStyle = 'green';
+		_ctx.strokeRect(-25,-25, 50, 50);
+		
+		// loop thrught drawing the objects
 		for ( var i=0; i < _objects.length; i++){
 			
 			var objDims = _objects[i].dims;
-			var drawDims = [];
+			var relPos = [];
 			
-			drawDims[0] = objDims[0] - this.dims[0]; // x dims with respect to the middle of the camera
-			drawDims[1] = objDims[1] - this.dims[1]; // y dims with respect to the middle of the camera
+			relPos[0] = objDims[0] - this.dims[0]; // x position with respect to the middle of the camera
+			relPos[1] = objDims[1] - this.dims[1]; // y position with respect to the middle of the camera
 			
-			//alert(drawDims[0]+" : "+drawDims[1]);
-			//alert(this.dims[2]/2 + " : " + this.dims[3]/2);
+			// SCALE ASSUMED TO BE 1:1
+			//if (this. < this.outputDims[0])
 			
 			_ctx.save();
-			_ctx.translate( (this.dims[2]/2) + drawDims[0], (this.dims[3]/2) + drawDims[1]);
+			_ctx.translate(relPos[0], relPos[1]);
 			_objects[i].draw(_ctx);
 			_ctx.restore();
+			
 		}
+		
+		_ctx.restore();
+		
+		//  *************   restore from the center of the view  ********************
 	},
 	
-	clearCanvas: function(_ctx){
+	clearView: function(_ctx){
 		
 		_ctx.save();
 		_ctx.fillStyle = 'white';
-		_ctx.fillRect(0, 0, 900, 600); // these should be the outpt dims
+		_ctx.fillRect(- this.outputDims[2]/2, -this.outputDims[3]/2, this.outputDims[2], this.outputDims[3]); // these should be the outpt dims
 		_ctx.restore();
 	},
 	
