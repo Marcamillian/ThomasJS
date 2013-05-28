@@ -7,7 +7,12 @@ GameCamera.prototype = {
 	setup: function(_dims, _outDims){
 		
 		this.dims = _dims; // worldDims -- world x,y - frame scale
-		this.outputDims = _outDims;
+		this.outputDims = _outDims;	// where it is drawing to 
+		
+		this.scale = [];
+		this.scale[0] = this.outputDims[2] / this.dims[2];
+		this.scale[1] = this.outputDims[3] / this.dims[3];
+		
 		// add in some output dims for multiple cameras
 		this.screenObjs = 0;
 	},
@@ -16,7 +21,7 @@ GameCamera.prototype = {
 		
 		if (this.screenObjs != _objects.length){
 			this.screenObjs = _objects.length;
-			alert("objects on screen : " + this.screenObjs);
+			//alert("objects on screen : " + this.screenObjs);
 		}
 		
 		// find the center of where we will be drawing on the canvas
@@ -35,8 +40,9 @@ GameCamera.prototype = {
 		_ctx.strokeRect(-this.outputDims[2]/2, -this.outputDims[3]/2, this.outputDims[2], this.outputDims[3]); // - move to the right place
 		
 		// move to the center of the view & draw the center
-		_ctx.strokeStyle = 'green';
-		_ctx.strokeRect(-25,-25, 50, 50);
+		_ctx.strokeStyle = 'green';		
+		_ctx.strokeRect( -(this.dims[2]/4)*this.scale[0],-(this.dims[3]/4)*this.scale[1], (this.dims[2]/2)*this.scale[0], (this.dims[3]/2)*this.scale[1] );
+		
 		
 		// loop thrught drawing the objects
 		for ( var i=0; i < _objects.length; i++){
