@@ -57,8 +57,8 @@ GameCamera.prototype = {
 			//if (this. < this.outputDims[0])
 			
 			_ctx.save();
-			_ctx.translate(relPos[0], relPos[1]);
-			_objects[i].draw(_ctx);
+			_ctx.translate(relPos[0]*this.scale[0], relPos[1]*this.scale[1]); // moves so we get teh relPos - could pass it
+			_objects[i].draw(_ctx, this.scale);
 			_ctx.restore();
 			
 		}

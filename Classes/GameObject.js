@@ -14,12 +14,16 @@ GameObject.prototype = {
 		this.color = _color;
 	},
 	
-	draw:function(ctx){
+	draw:function(_ctx, _scale ){
 		
-		ctx.save();
-		ctx.fillStyle = this.color;
-		ctx.fillRect(this.dims[2]/2, this.dims[3]/2, this.dims[2], this.dims[3]);
-		ctx.restore()
+		//alert( (this.dims[2]/2) + " , " + (this.dims[2]/2)/2);
+		
+		_ctx.save();
+		_ctx.fillStyle = this.color;
+		_ctx.fillRect((this.dims[2]/2)*_scale[0], (this.dims[3]/2)*_scale[1], (this.dims[2])*_scale[0], (this.dims[3])*_scale[1]);
+		//alert((this.dims[2]/2)/2 +" : "+ (this.dims[3]/2)/2 +" : "+ (this.dims[2])/2 +" : "+ (this.dims[3])/2);
+		//_ctx.fillRect(this.dims[2]/2, this.dims[3]/2, this.dims[2], this.dims[3]);
+		_ctx.restore()
 	},
 	
 	update:function(){
