@@ -41,14 +41,15 @@ var ThomasJS = {
 	},
 	
 	gameLoop: function(){
-		/*
+		
 		ThomasJS.objManager.update();
-		var viewObjects = ThomasJS.objManager.getObjects(ThomasJS.camera.outputDims);
-		ThomasJS.camera.draw(ThomasJS.ctx, viewObjects);
-		*/
-		var viewObjects = ThomasJS.objManager.update();
+		var viewObjects = ThomasJS.objManager.getObjects(ThomasJS.camera.dims);
 		ThomasJS.camera.draw(ThomasJS.ctx, viewObjects);
 		
+		/*
+		var viewObjects = ThomasJS.objManager.update();
+		ThomasJS.camera.draw(ThomasJS.ctx, viewObjects);
+		*/
 	}
 	
 }
