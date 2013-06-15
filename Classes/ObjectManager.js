@@ -45,6 +45,8 @@ ObjectManager.prototype = {
 			objLimits[2] = objDims[1] + (objDims[3]/2);	// bottom edge
 			objLimits[3] = objDims[1] - (objDims[3]/2);	// top edge
 
+
+			/*
 			// off to the left
 			if( objLimits[0] >= frameLimits[1]){
 				
@@ -65,6 +67,17 @@ ObjectManager.prototype = {
 				
 				console.log("off to the right: " + objLimits[0] + " > " + frameLimits[0]);
 			}
+			*/
+			
+			if ( objLimits[0] >= frameLimits[1]  &&  objLimits[1] <= frameLimits [0] ){
+				
+				if ( objLimits[2] >= frameLimits[3]  &&  objLimits[3] <= frameLimits [2] ){
+					
+					drawObjects.push(this.objects[i]);
+					
+				}
+			}
+			
 			
 		}
 		
