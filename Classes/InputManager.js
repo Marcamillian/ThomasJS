@@ -12,6 +12,9 @@ InputManager.prototype = {
 		
 		var inputObj = ThomasJS.inputManager.focusObject;
 		
+		var traceObject = ThomasJS.objManager.objects[1];	
+		//alert(_evt.keyCode);
+		
 		switch(_evt.keyCode){
 			case 37: 
 				inputObj.input('left');
@@ -24,6 +27,9 @@ InputManager.prototype = {
 				break;
 			case 40:
 				inputObj.input('down');
+				break;
+			case 13:
+				//traceObject.input('enter');
 				break;
 		}
 	}

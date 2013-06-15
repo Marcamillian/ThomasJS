@@ -47,6 +47,8 @@ GameCamera.prototype = {
 		// loop thrught drawing the objects
 		for ( var i=0; i < _objects.length; i++){
 			
+			// NEED TO MASK THE DRAW POINT CHANGE IT FROM THE CENTER IF IT NEEDS IT
+			
 			var objDims = _objects[i].dims;
 			var relPos = [];
 			

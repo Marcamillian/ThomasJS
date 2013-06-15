@@ -12,7 +12,7 @@ var ThomasJS = {
 		this.objManager.setup();
 		
 		this.camera = Object.create(GameCamera.prototype);
-		this.camera.setup([0, 0, this.WIDTH, this.HEIGHT], [this.WIDTH/2, this.HEIGHT/2, this.WIDTH, this.HEIGHT]);
+		this.camera.setup([0, 0, this.WIDTH, this.HEIGHT], [this.WIDTH/2, this.HEIGHT/2, this.WIDTH/2, this.HEIGHT/2]);
 		
 		this.inputManager = Object.create(InputManager.prototype);
 		this.inputManager.setup(this.camera);
@@ -21,19 +21,19 @@ var ThomasJS = {
 		
 		
 		// initalise the gameObjects
-		
+		/*
 		var player = Object.create(PlayerObject.prototype);
 		player.setup([40,40, 40, 40], 'red');
 		this.objManager.addObject(player);
-		
+		*/
 		var midPoint = Object.create(GameObject.prototype);
-		midPoint.setup([0,0, 10, 10], 'green');
+		midPoint.setup([0,0, 30, 30], 'green');
 		this.objManager.addObject(midPoint);
-		
+		/*
 		var enemy = Object.create(GameObject.prototype);
 		enemy.setup([50, 100 , 40 , 40], 'blue');
 		this.objManager.addObject(enemy);
-		
+		*/
 		
 		// set the loop
 		setInterval(ThomasJS.gameLoop, 33);
