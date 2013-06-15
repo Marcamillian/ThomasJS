@@ -59,10 +59,6 @@ ObjectManager.prototype = {
 					drawObjects.push(this.objects[i]);
 				}
 				
-			}else{
-				
-				console.log("something out");
-				
 			}
 			
 			/*

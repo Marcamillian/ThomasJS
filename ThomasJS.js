@@ -1,5 +1,6 @@
 var ThomasJS = {
 	something: 'something',
+	
 	init:function (){
 		
 		this.canvas = document.getElementById('game-canvas');
@@ -19,11 +20,14 @@ var ThomasJS = {
 		
 		document.addEventListener('keydown', ThomasJS.inputManager.input, true);
 		
+		// load all the sprites
+		this.playerSprite = new Image();
+		this.playerSprite.src = 'Assets/RabbitSprite_2.png';
 		
 		// initalise the gameObjects
 		
 		var player = Object.create(PlayerObject.prototype);
-		player.setup([40,40, 40, 40], 'red');
+		player.setup(this.playerSprite, [40,40, 64, 64] , 'red');
 		this.objManager.addObject(player);
 		
 		var midPoint = Object.create(GameObject.prototype);
