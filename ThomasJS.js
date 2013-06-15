@@ -27,7 +27,7 @@ var ThomasJS = {
 		this.objManager.addObject(player);
 		
 		var midPoint = Object.create(GameObject.prototype);
-		midPoint.setup([0,0, 10, 10], 'green');
+		midPoint.setup([0,0, 30, 30], 'green');
 		this.objManager.addObject(midPoint);
 		
 		var enemy = Object.create(GameObject.prototype);

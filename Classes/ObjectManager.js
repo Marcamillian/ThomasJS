@@ -44,29 +44,12 @@ ObjectManager.prototype = {
 			objLimits[1] = objDims[0] - (objDims[2]/2);	// left edge
 			objLimits[2] = objDims[1] + (objDims[3]/2);	// bottom edge
 			objLimits[3] = objDims[1] - (objDims[3]/2);	// top edge
-
-
 			/*
-			// off to the left
-			if( objLimits[0] >= frameLimits[1]){
-				
-				drawObjects.push(this.objects[i]);
-				
-			}else{
-				
-				console.log("off to the left: " + objLimits[1] + " < " + frameLimits[1]);
-				
-			}
-			
-			// off to the right
-			if (objLimits[1] <= frameLimits [0]) { // left & right culling
-				
-				drawObjects.push(this.objects[i]);
-				
-			}else{
-				
-				console.log("off to the right: " + objLimits[0] + " > " + frameLimits[0]);
-			}
+			var gap = [];
+			gap[0] = Math.abs(objLimits[0]) ; // left
+			gap[1] = Math.abs(objLimits[1]) ; // right
+			gap[2] = Math.abs(objLimits[2]) ; // top
+			gap[3] = Math.abs(objLimits[3]) ; //  bototm
 			*/
 			
 			if ( objLimits[0] >= frameLimits[1]  &&  objLimits[1] <= frameLimits [0] ){
@@ -74,10 +57,26 @@ ObjectManager.prototype = {
 				if ( objLimits[2] >= frameLimits[3]  &&  objLimits[3] <= frameLimits [2] ){
 					
 					drawObjects.push(this.objects[i]);
+				}
+				
+			}else{
+				
+				console.log("something out");
+				
+			}
+			
+			/*
+			if ( objLimits[0] >= frameLimits[1]  &&  objLimits[1] <= frameLimits [0] ){
+				
+				
+				
+				if ( objLimits[2] >= frameLimits[3]  &&  objLimits[3] <= frameLimits [2] ){
+					
+					drawObjects.push(this.objects[i]);
 					
 				}
 			}
-			
+			*/
 			
 		}
 		

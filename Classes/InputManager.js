@@ -10,6 +10,8 @@ InputManager.prototype = {
 	
 	input: function(_evt){
 		
+		_evt.preventDefault();
+		
 		var inputObj = ThomasJS.inputManager.focusObject;
 		
 		var traceObject = ThomasJS.objManager.objects[1];	

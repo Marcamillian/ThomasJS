@@ -42,7 +42,10 @@ GameCamera.prototype = {
 		// move to the center of the view & draw the center
 		_ctx.strokeStyle = 'green';		
 		_ctx.strokeRect( -(this.dims[2]/4)*this.scale[0],-(this.dims[3]/4)*this.scale[1], (this.dims[2]/2)*this.scale[0], (this.dims[3]/2)*this.scale[1] );
-		
+		// draw a central cross hair
+		//_ctx.strokeStyle = 'black';
+		//_ctx.fillRect( 0,  0, 2 , 5);
+		//_ctx.fillRect( 0,  0, 5 , 2);
 		
 		// loop thrught drawing the objects
 		for ( var i=0; i < _objects.length; i++){
