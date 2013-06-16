@@ -45,20 +45,29 @@ ObjectManager.prototype = {
 			objLimits[2] = objDims[1] + (objDims[3]/2);	// bottom edge
 			objLimits[3] = objDims[1] - (objDims[3]/2);	// top edge
 
-			// got the vectors between corners
+			// vectors between top left between corners
 			var tlVector = [];
 			tlVector[0] = objLimits[1] - frameLimits[1];
 			tlVector[1] = objLimits[3] - frameLimits[3];
 			
+			// vectors between bottom right corners
 			var brVector = [];
 			brVector[0] = objLimits[0] - frameLimits[0];
 			brVector[1] = objLimits[2] - frameLimits[2];
 			
-			if ( tlVector[0] + objDims[2] >= 0  &&  brVector[0] - objDims[3] <= 0 ){
+				//top left  x less than width 			// bottom right x less than width
+			if ( tlVector[0] >=  - objDims[2]  &&  brVector[0] <= objDims[2] ){
 				
-				if ( tlVector[1] + objDims[2] >= 0 &&  brVector[1] - objDims[3] <= 0 ){
+					// top left y less than height		// bottom right less than height
+				if ( tlVector[1] >= - objDims[3] &&  brVector[1] <= objDims[3] ){
 					
+					// check to see if it is partiall on
+					if (tlVector[0]*tlVector[1] < 0  || brVector[0]*brVector[1] < 0){
+						console.log("pratially on");
+					}
+			
 					drawObjects.push(this.objects[i]);
+					
 				}else{
 					console.log("lost it vert");
 				}
