@@ -36,7 +36,7 @@ var ThomasJS = {
 		midPoint.setup([5,5, 10, 10], 'green');
 		this.objManager.addObject(midPoint);
 		
-		/*
+		
 		var tr = Object.create(GameObject.prototype);
 		tr.setup([50,-50, 20, 20], 'blue');
 		this.objManager.addObject(tr);
@@ -52,6 +52,22 @@ var ThomasJS = {
 		var bl = Object.create(GameObject.prototype);
 		bl.setup([-50,50, 20, 20], 'pink');
 		this.objManager.addObject(bl);
+		/*
+		var tr2 = Object.create(GameObject.prototype);
+		tr2.setup([100,-100, 20, 20], 'blue');
+		this.objManager.addObject(tr2);
+		
+		var tl2 = Object.create(GameObject.prototype);
+		tl2.setup([-100,-100, 20, 20], 'red');
+		this.objManager.addObject(tl2);
+		
+		var br2 = Object.create(GameObject.prototype);
+		br2.setup([100,100, 20, 20], 'yellow');
+		this.objManager.addObject(br2);
+		
+		var bl2 = Object.create(GameObject.prototype);
+		bl2.setup([-100,100, 20, 20], 'pink');
+		this.objManager.addObject(bl2);
 		*/
 		
 		// set the loop

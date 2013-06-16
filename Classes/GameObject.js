@@ -11,6 +11,7 @@ GameObject.prototype = {
 		
 		this.dims = _dims;
 		this.color = _color;
+		this.drawMask = [0,0, this.dims[2], this.dims[3]];
 	},
 	
 	draw:function(_ctx, _scale ){
@@ -19,8 +20,18 @@ GameObject.prototype = {
 		
 		_ctx.save();
 		_ctx.fillStyle = this.color;
+		
+		// ====== original draw stuff
 		_ctx.translate(-this.dims[2], -this.dims[3]);
 		_ctx.fillRect((this.dims[2]/2)*_scale[0], (this.dims[3]/2)*_scale[1], (this.dims[2])*_scale[0], (this.dims[3])*_scale[1]);
+		// ======
+		
+		/*
+		// WAS DOIN THIS - DRAW THE MASK
+		_ctx.translate(-this.dims[2], -this.dims[3]);
+		_ctx.fillRect((this.dims[2]/2)*_scale[0], (this.dims[3]/2)*_scale[1], (this.dims[2])*_scale[0], (this.dims[3])*_scale[1]);
+		*/
+		
 		//alert((this.dims[2]/2)/2 +" : "+ (this.dims[3]/2)/2 +" : "+ (this.dims[2])/2 +" : "+ (this.dims[3])/2);
 		//_ctx.fillRect(this.dims[2]/2, this.dims[3]/2, this.dims[2], this.dims[3]);
 		_ctx.restore()
@@ -32,6 +43,16 @@ GameObject.prototype = {
 	
 	input:function(){
 		alert(this.dims);
+	},
+	setDrawMask:function(_drawMask){
+		
+		if(_drawMask == null){
+			this.drawMask = [0,0,this.dims[2], this.dims[3]];
+		}else{
+			this.drawMask = _drawMask;
+		}
+		
+		
 	}
 }
 

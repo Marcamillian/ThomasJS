@@ -6,6 +6,7 @@ PlayerObject.prototype.setup = function(_image , _dims){
 	
 	this.image = _image;
 	this.dims = _dims;
+	this.drawMask = [0,0, this.dims[2], this.dims[3]];
 }
 
 PlayerObject.prototype.draw = function(_ctx, _scale){
@@ -19,7 +20,7 @@ PlayerObject.prototype.draw = function(_ctx, _scale){
 	
 	_ctx.drawImage(	this.image,
 					//source
-					0,0, this.dims[2], this.dims[3],
+					this.drawMask[0],this.drawMask[1], this.drawMask[2], this.drawMask[3],
 					// destination
 					(this.dims[2]/2)*_scale[0], (this.dims[3]/2)*_scale[1], (this.dims[2])*_scale[0], (this.dims[3])*_scale[1]);
 	
