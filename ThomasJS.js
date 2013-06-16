@@ -26,18 +26,33 @@ var ThomasJS = {
 		
 		// initalise the gameObjects
 		
+		/*
 		var player = Object.create(PlayerObject.prototype);
 		player.setup(this.playerSprite, [40,40, 64, 64] , 'red');
 		this.objManager.addObject(player);
+		*/
 		
 		var midPoint = Object.create(GameObject.prototype);
-		midPoint.setup([0,0, 30, 30], 'green');
+		midPoint.setup([5,5, 10, 10], 'green');
 		this.objManager.addObject(midPoint);
 		
-		var enemy = Object.create(GameObject.prototype);
-		enemy.setup([50, 100 , 40 , 40], 'blue');
-		this.objManager.addObject(enemy);
+		/*
+		var tr = Object.create(GameObject.prototype);
+		tr.setup([50,-50, 20, 20], 'blue');
+		this.objManager.addObject(tr);
 		
+		var tl = Object.create(GameObject.prototype);
+		tl.setup([-50,-50, 20, 20], 'red');
+		this.objManager.addObject(tl);
+		
+		var br = Object.create(GameObject.prototype);
+		br.setup([50,50, 20, 20], 'yellow');
+		this.objManager.addObject(br);
+		
+		var bl = Object.create(GameObject.prototype);
+		bl.setup([-50,50, 20, 20], 'pink');
+		this.objManager.addObject(bl);
+		*/
 		
 		// set the loop
 		setInterval(ThomasJS.gameLoop, 33);
