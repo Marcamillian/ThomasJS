@@ -68,6 +68,27 @@ GameCamera.prototype = {
 			
 		}
 		
+		// draw a central cross hair
+		_ctx.save();
+		_ctx.strokeStyle = 'black';
+		
+		_ctx.fillRect( 0,  0, 2 , 5);
+		_ctx.fillRect( 0,  0, 5 , 2);
+		
+		_ctx.fillRect( 50/2,  50/2, 2 , 5);
+		_ctx.fillRect( 50/2,  50/2, 5 , 2);
+		
+		_ctx.fillRect( -50/2,  -50/2, 2 , 5);
+		_ctx.fillRect( -50/2,  -50/2, 5 , 2);
+		
+		_ctx.fillRect( 50/2,  -50/2, 2 , 5);
+		_ctx.fillRect( -50/2,  50/2, 5 , 2);
+		
+		_ctx.fillRect( -50/2, 50/2, 2 , 5);
+		_ctx.fillRect( 50/2, -50/2, 5 , 2);
+		
+		_ctx.restore();
+		
 		_ctx.restore();
 		
 		//  *************   restore from the center of the view  ********************

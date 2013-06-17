@@ -13,7 +13,7 @@ var ThomasJS = {
 		this.objManager.setup();
 		
 		this.camera = Object.create(GameCamera.prototype);
-		this.camera.setup([0, 0, this.WIDTH, this.HEIGHT], [this.WIDTH/2, this.HEIGHT/2, this.WIDTH, this.HEIGHT]);
+		this.camera.setup([0, 0, this.WIDTH, this.HEIGHT], [this.WIDTH/2, this.HEIGHT/2, this.WIDTH/2, this.HEIGHT]);
 		
 		this.inputManager = Object.create(InputManager.prototype);
 		this.inputManager.setup(this.camera);
@@ -33,24 +33,24 @@ var ThomasJS = {
 		*/
 		
 		var midPoint = Object.create(GameObject.prototype);
-		midPoint.setup([5,5, 10, 10], 'green');
+		midPoint.setup([0,0, 10, 10], 'green');
 		this.objManager.addObject(midPoint);
 		
 		
 		var tr = Object.create(GameObject.prototype);
-		tr.setup([50,-50, 20, 20], 'blue');
+		tr.setup([50,-50, 40, 40], 'blue');
 		this.objManager.addObject(tr);
 		
 		var tl = Object.create(GameObject.prototype);
-		tl.setup([-50,-50, 20, 20], 'red');
+		tl.setup([-50,-50, 40, 40], 'red');
 		this.objManager.addObject(tl);
 		
 		var br = Object.create(GameObject.prototype);
-		br.setup([50,50, 20, 20], 'yellow');
+		br.setup([50,50, 40, 40], 'yellow');
 		this.objManager.addObject(br);
 		
 		var bl = Object.create(GameObject.prototype);
-		bl.setup([-50,50, 20, 20], 'pink');
+		bl.setup([-50,50, 40, 40], 'pink');
 		this.objManager.addObject(bl);
 		/*
 		var tr2 = Object.create(GameObject.prototype);

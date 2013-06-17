@@ -22,15 +22,15 @@ GameObject.prototype = {
 		_ctx.fillStyle = this.color;
 		
 		// ====== original draw stuff
-		_ctx.translate(-this.dims[2], -this.dims[3]);
-		_ctx.fillRect((this.dims[2]/2)*_scale[0], (this.dims[3]/2)*_scale[1], (this.dims[2])*_scale[0], (this.dims[3])*_scale[1]);
+		//_ctx.translate(0, 0);
+		//_ctx.fillRect(-(this.dims[2]/2)*_scale[0], -(this.dims[3]/2)*_scale[1], (this.dims[2])*_scale[0], (this.dims[3])*_scale[1]);
 		// ======
 		
-		/*
+		
 		// WAS DOIN THIS - DRAW THE MASK
-		_ctx.translate(-this.dims[2], -this.dims[3]);
-		_ctx.fillRect((this.dims[2]/2)*_scale[0], (this.dims[3]/2)*_scale[1], (this.dims[2])*_scale[0], (this.dims[3])*_scale[1]);
-		*/
+		// @ the middle position of the thing
+		_ctx.fillRect( -(this.drawMask[2]/2)*_scale[0], -(this.drawMask[3]/2)*_scale[1], (this.drawMask[2])*_scale[0], (this.drawMask[3])*_scale[1] ); // draw the width that we are working with
+		
 		
 		//alert((this.dims[2]/2)/2 +" : "+ (this.dims[3]/2)/2 +" : "+ (this.dims[2])/2 +" : "+ (this.dims[3])/2);
 		//_ctx.fillRect(this.dims[2]/2, this.dims[3]/2, this.dims[2], this.dims[3]);
