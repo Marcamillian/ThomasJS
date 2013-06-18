@@ -35,9 +35,6 @@ GameCamera.prototype = {
 		_ctx.translate(this.outputDims[0], this.outputDims[1]); 
 
 		this.clearView(_ctx);	
-
-		_ctx.strokeStyle = 'red';
-		_ctx.strokeRect(-this.outputDims[2]/2, -this.outputDims[3]/2, this.outputDims[2], this.outputDims[3]); // - move to the right place
 		
 		// move to the center of the view & draw the center
 		_ctx.strokeStyle = 'green';		
@@ -69,6 +66,7 @@ GameCamera.prototype = {
 		}
 		
 		// draw a central cross hair
+		/*
 		_ctx.save();
 		_ctx.strokeStyle = 'black';
 		
@@ -89,9 +87,15 @@ GameCamera.prototype = {
 		
 		_ctx.restore();
 		
+		*/
+		
+		_ctx.strokeStyle = 'black';
+		_ctx.strokeRect(-this.outputDims[2]/2, -this.outputDims[3]/2, this.outputDims[2], this.outputDims[3]); // - move to the right place
+		
 		_ctx.restore();
 		
 		//  *************   restore from the center of the view  ********************
+		
 	},
 	
 	clearView: function(_ctx){
