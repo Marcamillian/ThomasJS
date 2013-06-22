@@ -62,34 +62,36 @@ ObjectManager.prototype = {
 				if ( tlVector[1] >= - objDims[3] &&  brVector[1] <= objDims[3] ){		// top left y less than height		&& 		// bottom right less than height
 					
 					// if partiallly on --- make the mask 
-					if (tlVector[0]*tlVector[1] < 0  || brVector[0]*brVector[1] < 0){
+					if (tlVector[0]		< 0 
+						|| tlVector[1] 	< 0
+						|| brVector[0]	> 0
+						|| brVector[1]	> 0){
+						// this doesnt pick up top left & bottom right as being partially
 						
 						drawMask = [0, 0, objDims[2], objDims[3]];
 						
 						// ==== for the top left adjustment
 						
-						// if tlVector[0]   if -ve
+						// if tlVector[0]   if -ve	//off the left
 						if( tlVector[0] < 0){
 							drawMask[0] = Math.abs(tlVector[0]);	// x position on the sprite to start drawing 
 							drawMask[2] = objDims[2] - Math.abs(tlVector[0]); 	// x width pf the sprite to draw
 						}
 						
-						// if tlVector[1]   if-ve
+						// if tlVector[1]   if-ve	//off the top
 						if( tlVector[1] < 0){
 							drawMask[1] = Math.abs(tlVector[1]);	// y position onthe sprite to start drawing 
 							drawMask[3] = objDims[3] - Math.abs(tlVector[1]); // y height of hte sprite to draw
 						}
 						
-						
 						// ==== for the bottom right adjustment ====
-						
 						// the start point will always be the same
 						
-						if (brVector[0] > 0){
+						if (brVector[0] > 0){	// off the right
 							drawMask[2] = objDims[2] - brVector[0];	// x width of the sprite to draw
 						}
 						
-						if (brVector[1] > 0){
+						if (brVector[1] > 0){	// off the bottom
 							drawMask[3] = objDims[3] - brVector[1]; // y height ofthe sprite to draw
 						}
 						

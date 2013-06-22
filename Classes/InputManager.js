@@ -10,8 +10,6 @@ InputManager.prototype = {
 	
 	input: function(_evt){
 		
-		_evt.preventDefault();
-		
 		var inputObj = ThomasJS.inputManager.focusObject;
 		
 		var traceObject = ThomasJS.objManager.objects[1];	
@@ -19,15 +17,19 @@ InputManager.prototype = {
 		
 		switch(_evt.keyCode){
 			case 37: 
+				_evt.preventDefault();
 				inputObj.input('left');
 				break;
 			case 38:
+				_evt.preventDefault();
 				inputObj.input('up');
 				break;
 			case 39:
+				_evt.preventDefault();
 				inputObj.input('right');
 				break;
 			case 40:
+				_evt.preventDefault();
 				inputObj.input('down');
 				break;
 			case 13:

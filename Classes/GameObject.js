@@ -22,26 +22,16 @@ GameObject.prototype = {
 		_ctx.fillStyle = this.color;
 		
 		// ====== original draw stuff
+		
 		_ctx.translate(-(this.dims[2]/2)*_scale[0], -(this.dims[3]/2)*_scale[1]);
 		_ctx.fillRect(0 ,0, (this.dims[2])*_scale[0], (this.dims[3])*_scale[1]);
+		
 		// ======
 		
-		_ctx.save()
 		_ctx.strokeStyle = 'black';
-		_ctx.beginPath();
-    	_ctx.moveTo(0, 0);
-   	 	_ctx.lineTo( this.drawMask[0]*_scale[0], this.drawMask[1]*_scale[1] );
-    	_ctx.closePath();
-    	_ctx.stroke();
-		_ctx.restore();
+		_ctx.translate( this.drawMask[0]*_scale[0] , this.drawMask[1]*_scale[1] );
+		_ctx.strokeRect( 0, 0, (this.drawMask[2])*_scale[0], (this.drawMask[3])*_scale[1] ); // draw the width that we are working with
 		
-		// WAS DOIN THIS - DRAW THE MASK
-		// @ the middle position of the thing
-		//_ctx.fillRect( -(this.drawMask[2]/2)*_scale[0], -(this.drawMask[3]/2)*_scale[1], (this.drawMask[2])*_scale[0], (this.drawMask[3])*_scale[1] ); // draw the width that we are working with
-		
-		
-		//alert((this.dims[2]/2)/2 +" : "+ (this.dims[3]/2)/2 +" : "+ (this.dims[2])/2 +" : "+ (this.dims[3])/2);
-		//_ctx.fillRect(this.dims[2]/2, this.dims[3]/2, this.dims[2], this.dims[3]);
 		_ctx.restore()
 	},
 	
