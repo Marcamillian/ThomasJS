@@ -22,15 +22,22 @@ var ThomasJS = {
 		
 		// load all the sprites
 		this.playerSprite = new Image();
-		this.playerSprite.src = 'Assets/RabbitSprite_2.png';
+		this.playerSprite.src = 'Assets/character_One.png';
+		
+		this.backgroundSprite = new Image();
+		this.backgroundSprite.src = 'Assets/House.png';
 		
 		// initalise the gameObjects
 		
+		var background = Object.create(PlayerObject.prototype);
+		background.setup(this.backgroundSprite, [ 0, 0, 2400, 728] , 'red');
+		this.objManager.addObject(background);
 		
 		var player = Object.create(PlayerObject.prototype);
-		player.setup(this.playerSprite, [40,40, 64, 64] , 'red');
+		player.setup(this.playerSprite, [0 , 0, 64, 128] , 'red');
 		this.objManager.addObject(player);
 		
+		// =====
 		
 		var midPoint = Object.create(GameObject.prototype);
 		midPoint.setup([0,0, 20, 20], 'green');
