@@ -13,7 +13,7 @@ var ThomasJS = {
 		this.objManager.setup();
 		
 		this.camera = Object.create(GameCamera.prototype);
-		this.camera.setup([0, 0, this.WIDTH, this.HEIGHT], [this.WIDTH/2, this.HEIGHT/2, this.WIDTH, this.HEIGHT]);
+		this.camera.setup([0, 0, this.WIDTH, this.HEIGHT], [this.WIDTH/2, this.HEIGHT/2, this.WIDTH/2, this.HEIGHT/2]);
 		
 		this.inputManager = Object.create(InputManager.prototype);
 		this.inputManager.setup(this.camera);
@@ -33,7 +33,7 @@ var ThomasJS = {
 		
 		
 		var midPoint = Object.create(GameObject.prototype);
-		midPoint.setup([0,0, 10, 10], 'green');
+		midPoint.setup([0,0, 20, 20], 'green');
 		this.objManager.addObject(midPoint);
 		
 		

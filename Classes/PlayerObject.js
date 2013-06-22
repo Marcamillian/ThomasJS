@@ -14,18 +14,15 @@ PlayerObject.prototype.draw = function(_ctx, _scale){
 	//alert( (this.dims[2]/2) + " , " + (this.dims[2]/2)/2);
 		
 	_ctx.save();
-	_ctx.fillStyle = this.color;
-	_ctx.translate(-this.dims[2], -this.dims[3]);
-	//_ctx.fillRect((this.dims[2]/2)*_scale[0], (this.dims[3]/2)*_scale[1], (this.dims[2])*_scale[0], (this.dims[3])*_scale[1]);
+	_ctx.translate(-(this.dims[2]/2)*_scale[0], -(this.dims[3]/2)*_scale[1]); // move to top left
 	
 	_ctx.drawImage(	this.image,
 					//source
-					this.drawMask[0],this.drawMask[1], this.drawMask[2], this.drawMask[3],
+					this.drawMask[0] , this.drawMask[1] , this.drawMask[2], this.drawMask[3],
 					// destination
-					(this.dims[2]/2)*_scale[0], (this.dims[3]/2)*_scale[1], (this.dims[2])*_scale[0], (this.dims[3])*_scale[1]);
-	
+					this.drawMask[0]*_scale[0] , this.drawMask[1]*_scale[1], (this.drawMask[2])*_scale[0], (this.drawMask[3])*_scale[1]);
 	_ctx.restore()
-	
+
 }
 
 PlayerObject.prototype.update = function(){
