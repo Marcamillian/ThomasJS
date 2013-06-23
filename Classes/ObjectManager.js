@@ -87,14 +87,25 @@ ObjectManager.prototype = {
 						// ==== for the bottom right adjustment ====
 						// the start point will always be the same
 						
+						// !! WORKING HERE - NEED TO FIGURE OUT WIDTH FOR BIGGER SPRITES
+						
 						if (brVector[0] > 0){	// off the right
-							drawMask[2] = objDims[2] - brVector[0];	// x width of the sprite to draw
+							//drawMask[2] = objDims[2] - Math.abs(brVector[0]);	// x width of the sprite to draw
+							var someWidth = objDims[2] - Math.abs(brVector[0]);
+							drawMask[2] = Math.min( Math.max( someWidth , 0) ,  _viewDims[2] );	// clamp between the view 
+							
 						}
 						
 						if (brVector[1] > 0){	// off the bottom
-							drawMask[3] = objDims[3] - brVector[1]; // y height ofthe sprite to draw
+							//drawMask[3] = objDims[3] - Math.abs(brVector[1]); // y height ofthe sprite to draw
+							var someHeight = objDims[3] - Math.abs(brVector[1]);
+							drawMask[3] = Math.min( Math.max( someHeight , 0) ,  _viewDims[3] );	// clamp between the view 
+							
 						}
 						
+						//alert(drawMask);
+						
+						//alert(drawMask);
 						
 						this.objects[i].setDrawMask(drawMask);
 						

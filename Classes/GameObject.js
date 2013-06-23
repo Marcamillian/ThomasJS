@@ -7,14 +7,23 @@ GameObject.prototype = {
 	images:1, // Array of all the character images in the game - ordered into an xml document?
 	
 	
-	setup:function(_dims, _color){
+	setup:function(_image, _dims, _color){
 		
 		this.dims = _dims;
-		this.color = _color;
+		
+		if (_image != null){
+			this.image = _image;
+			this.draw = this.imageDraw;
+		}else{
+			this.color = _color;
+			this.draw = this.shapeDraw;
+		}
+		
 		this.drawMask = [0,0, this.dims[2], this.dims[3]];
+		
 	},
 	
-	draw:function(_ctx, _scale ){
+	shapeDraw:function(_ctx, _scale ){
 		
 		_ctx.save();
 		_ctx.fillStyle = this.color;
@@ -23,6 +32,20 @@ GameObject.prototype = {
 		_ctx.fillRect( 0, 0, (this.drawMask[2])*_scale[0], (this.drawMask[3])*_scale[1] ); // draw the width that we are working with
 		
 		_ctx.restore()
+	},
+	
+	imageDraw:function(_ctx, _scale){
+		
+		_ctx.save();
+		_ctx.translate(-(this.dims[2]/2)*_scale[0], -(this.dims[3]/2)*_scale[1]); // move to top left
+	
+		_ctx.drawImage(	this.image,
+						//source
+						this.drawMask[0] , this.drawMask[1] , this.drawMask[2], this.drawMask[3],
+						// destination
+						this.drawMask[0]*_scale[0] , this.drawMask[1]*_scale[1], (this.drawMask[2])*_scale[0], (this.drawMask[3])*_scale[1]);
+		_ctx.restore()
+		
 	},
 	
 	update:function(){
