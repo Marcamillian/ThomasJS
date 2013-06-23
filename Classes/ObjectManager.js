@@ -24,8 +24,6 @@ ObjectManager.prototype = {
 	
 	getObjects: function(_viewDims){
 		
-		//return this.objects;
-		
 		var frameLimits = [];
 		frameLimits[0] = _viewDims[0] + (_viewDims[2]/2); // right edge
 		frameLimits[1] = _viewDims[0] - (_viewDims[2]/2); // left edge

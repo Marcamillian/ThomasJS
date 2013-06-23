@@ -13,7 +13,7 @@ var ThomasJS = {
 		this.objManager.setup();
 		
 		this.camera = Object.create(GameCamera.prototype);
-		this.camera.setup([0, 0, this.WIDTH, this.HEIGHT], [this.WIDTH/2, this.HEIGHT/2, this.WIDTH, this.HEIGHT]);
+		this.camera.setup([0, 0, this.WIDTH, this.HEIGHT], [this.WIDTH/2, this.HEIGHT/2, this.WIDTH/2, this.HEIGHT/2]);
 		
 		this.inputManager = Object.create(InputManager.prototype);
 		this.inputManager.setup(this.camera);
@@ -22,7 +22,7 @@ var ThomasJS = {
 		
 		// load all the sprites
 		this.playerSprite = new Image();
-		this.playerSprite.src = 'Assets/character_One.png';
+		this.playerSprite.src = 'Assets/StandWalkInteract.png';
 		
 		this.backgroundSprite = new Image();
 		this.backgroundSprite.src = 'Assets/House.png';
@@ -33,8 +33,8 @@ var ThomasJS = {
 		background.setup(this.backgroundSprite, [ 0, 0, 2400, 728] , 'red');
 		this.objManager.addObject(background);
 		
-		var player = Object.create(PlayerObject.prototype);
-		player.setup(this.playerSprite, [0 , 0, 64, 128] , 'red');
+		var player = Object.create(GameObject.prototype);
+		player.setup(this.playerSprite, [0 , 0, 128, 256] , 'red');
 		this.objManager.addObject(player);
 		
 		// =====
