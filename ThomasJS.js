@@ -29,16 +29,18 @@ var ThomasJS = {
 		
 		// initalise the gameObjects
 		
+		/*
 		var background = Object.create(GameObject.prototype);
 		background.setup(this.backgroundSprite, [ 0, 0, 2400, 728] , 'red');
 		this.objManager.addObject(background);
+		*/
 		
 		var player = Object.create(GameObject.prototype);
 		player.setup(this.playerSprite, [0 , 0, 128, 256] , 'red');
 		this.objManager.addObject(player);
 		
 		// =====
-		
+		/*
 		var midPoint = Object.create(GameObject.prototype);
 		midPoint.setup(null, [0,0, 20, 20], 'green');
 		this.objManager.addObject(midPoint);
@@ -77,7 +79,7 @@ var ThomasJS = {
 		var bl2 = Object.create(GameObject.prototype);
 		bl2.setup(null, [-100,100, 20, 20], 'pink');
 		this.objManager.addObject(bl2);
-		
+		*/
 		
 		// set the loop
 		setInterval(ThomasJS.gameLoop, 33);
