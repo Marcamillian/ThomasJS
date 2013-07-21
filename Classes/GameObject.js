@@ -21,33 +21,9 @@ GameObject.prototype = {
 		
 		this.drawMask = [0,0, this.dims[2], this.dims[3]];
 		
-<<<<<<< HEAD
-		
-		// ANIMATION VARIABLES
-		
-		this.animation = 0 ;
-		this.frame = 0;
-		this.frameTime = 0;
-		
-		this.facing = 1; // 0 == flipped 
-		this.flip = new Array(function(ctx){						
-							},
-							function(ctx){
-								ctx.scale(-1,1);
-							});
-	
-		// animation references
-		// ANIMATION NAME = new array (FRAME-RATE(in ms), FRAMES, LOOP)
-		var animationData = new Array;
-		animationData.push(new Array(300, 1, true)); 	//  0 - stand
-		animationData.push(new Array(300, 2, true));	//  1 - walk 
-		animationData.push(new Array(600, 1, false));	// 	2 - interact
-
-=======
 		this.animation = 1;
 		this.frame = 0;
 		
->>>>>>> 44fa6b45f7a0a4c6dc3a4211ee23e526a074cda3
 	},
 	
 	shapeDraw:function(_ctx, _scale ){
@@ -68,11 +44,8 @@ GameObject.prototype = {
 		
 		_ctx.drawImage(	this.image,
 						//source
-<<<<<<< HEAD
-						this.frame*this.dims[2] + this.drawMask[0] , this.animation*this.dims[3] + this.drawMask[1] , this.drawMask[2], this.drawMask[3],
-=======
 						this.drawMask[0] + this.drawMask[2]*this.frame , this.drawMask[1] + this.drawMask[3]*this.animation , this.drawMask[2], this.drawMask[3],
->>>>>>> 44fa6b45f7a0a4c6dc3a4211ee23e526a074cda3
+
 						// destination
 						this.drawMask[0]*_scale[0] , this.drawMask[1]*_scale[1], (this.drawMask[2])*_scale[0], (this.drawMask[3])*_scale[1]);
 		_ctx.restore();
