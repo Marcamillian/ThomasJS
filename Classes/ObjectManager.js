@@ -103,8 +103,6 @@ ObjectManager.prototype = {
 						
 						//alert(drawMask);
 						
-						//alert(drawMask);
-						
 						this.objects[i].setDrawMask(drawMask);
 						
 					}else{

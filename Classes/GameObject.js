@@ -6,7 +6,6 @@ GameObject.prototype = {
 	
 	images:1, // Array of all the character images in the game - ordered into an xml document?
 	
-	
 	setup:function(_image, _dims, _color){
 		
 		this.dims = _dims;
@@ -21,7 +20,8 @@ GameObject.prototype = {
 		
 		this.drawMask = [0,0, this.dims[2], this.dims[3]];
 		
-		this.animation = 1;
+		// ??? problem with the animation going > 1 - messes with the drawmask - draw mask doesnt stop at the edge of the frame???
+		this.animation = 0;
 		this.frame = 0;
 		
 	},
@@ -48,6 +48,8 @@ GameObject.prototype = {
 
 						// destination
 						this.drawMask[0]*_scale[0] , this.drawMask[1]*_scale[1], (this.drawMask[2])*_scale[0], (this.drawMask[3])*_scale[1]);
+						
+		//_ctx.strokeRect( 0, 0, (this.drawMask[2])*_scale[0], (this.drawMask[3])*_scale[1] );
 		_ctx.restore();
 		
 	},
