@@ -9,7 +9,7 @@ PlayerObject.prototype.setup = function(_image , _dims){
 	this.drawMask = [0,0, this.dims[2], this.dims[3]];
 	
 	this.frame =1;
-	this.animation =1;
+	this.animation =2;
 
 }
 

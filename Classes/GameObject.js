@@ -21,7 +21,7 @@ GameObject.prototype = {
 		this.drawMask = [0,0, this.dims[2], this.dims[3]];
 		
 		// ??? problem with the animation going > 1 - messes with the drawmask - draw mask doesnt stop at the edge of the frame???
-		this.animation = 0;
+		this.animation = 1;
 		this.frame = 0;
 		
 	},
@@ -44,10 +44,11 @@ GameObject.prototype = {
 		
 		_ctx.drawImage(	this.image,
 						//source
-						this.drawMask[0] + this.drawMask[2]*this.frame , this.drawMask[1] + this.drawMask[3]*this.animation , this.drawMask[2], this.drawMask[3],
+						this.dims[2]*this.frame + this.drawMask[0] , this.dims[3]*this.animation + this.drawMask[1] , this.drawMask[2], this.drawMask[3],
 
 						// destination
 						this.drawMask[0]*_scale[0] , this.drawMask[1]*_scale[1], (this.drawMask[2])*_scale[0], (this.drawMask[3])*_scale[1]);
+		//console.log()
 						
 		//_ctx.strokeRect( 0, 0, (this.drawMask[2])*_scale[0], (this.drawMask[3])*_scale[1] );
 		_ctx.restore();
