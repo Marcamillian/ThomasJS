@@ -8,6 +8,10 @@ var ThomasJS = {
 		this.WIDTH = this.canvas.width;
 		this.HEIGHT = this.canvas.height;
 		
+		this.elapsedTime = 0;
+		this.globalTime;
+		this.dt;
+		
 		// initialise engineObjects
 		this.objManager = Object.create(ObjectManager.prototype);
 		this.objManager.setup();
@@ -26,6 +30,8 @@ var ThomasJS = {
 		
 		this.backgroundSprite = new Image();
 		this.backgroundSprite.src = 'Assets/House.png';
+		
+		
 		
 		// initalise the gameObjects
 		
@@ -88,7 +94,8 @@ var ThomasJS = {
 	
 	gameLoop: function(){
 		
-		ThomasJS.objManager.update();
+		ThomasJS.advGameTime();
+		ThomasJS.objManager.update(ThomasJS.dt);
 		var viewObjects = ThomasJS.objManager.getObjects(ThomasJS.camera.dims);
 		ThomasJS.camera.draw(ThomasJS.ctx, viewObjects);
 		
@@ -96,6 +103,20 @@ var ThomasJS = {
 		var viewObjects = ThomasJS.objManager.update();
 		ThomasJS.camera.draw(ThomasJS.ctx, viewObjects);
 		*/
+	},
+	
+	advGameTime: function(){
+		
+		var clock = new Date();
+		var currentTime = clock.getTime();
+		
+		this.dt = currentTime - this.globalTime;
+		this.globalTime = currentTime;
+		
+		var thing = 0 + this.dt;
+		
+		console.log("elapsed time : " + thing );
+		
 	}
 	
 }

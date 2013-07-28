@@ -12,10 +12,10 @@ ObjectManager.prototype = {
 		this.objects.push(_object);
 	},
 	
-	update: function(){
+	update: function(_dt){
 		
 		for ( var i=0; i < this.objects.length; i++){
-			this.objects[i].update();
+			this.objects[i].update(_dt);
 			//this.objects[i].draw(ctx);
 		}
 		

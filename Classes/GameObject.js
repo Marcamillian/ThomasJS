@@ -20,9 +20,17 @@ GameObject.prototype = {
 		
 		this.drawMask = [0,0, this.dims[2], this.dims[3]];
 		
-		// ??? problem with the animation going > 1 - messes with the drawmask - draw mask doesnt stop at the edge of the frame???
-		this.animation = 1;
+		// animation references
+		// ANIMATION NAME = new array (FRAME-RATE(in ms), FRAMES, LOOP)
+		this.animationData = new Array;
+		this.animationData.push(new Array(300, 1, true)); 	//  0 - stand
+		this.animationData.push(new Array(300, 2, true));	//  1 - walk 
+		this.animationData.push(new Array(600, 1, false));	// 	2 - interact
+	
+		this.animation = 1 ;
 		this.frame = 0;
+		this.frameTime = 0;
+
 		
 	},
 	
@@ -55,7 +63,9 @@ GameObject.prototype = {
 		
 	},
 	
-	update:function(){
+	update:function(_dt){
+		//console.log("update: "+ this.frameTime);
+		this.animate(_dt);
 		
 	},
 	
@@ -72,21 +82,26 @@ GameObject.prototype = {
 		
 		
 	},
-	animate:function(dt){
+	animate:function(_dt){
 		
-		frameTime += dt;
+		//console.log(this.frameTime);
 		
-		if (frameTime > animationData[animation][0]){
-			frame ++;
-			if (frame < (animationData[animation][1])){
+		this.frameTime += _dt;
+		
+		console.log(this.frameTime);
+		/*
+		if (this.frameTime > this.animationData[this.animation][0]){
+			this.frame ++;
+			if (this.frame < (this.animationData[this.animation][1])){
 				//alert("animation"+animation +" | frame:"+ (frame+1) +" of "+animationData[animation][1]);
 			} else {
-				if (animationData[animation][2] == false){
-					animation = 0;
+				if (this.animationData[this.animation][2] == false){
+					this.animation = 0;
 				}
-				frame = 0;
+				this.frame = 0;
 			}
-			frameTime = 0;
+			this.frameTime = 0;
 		}
+		*/
 	}
 }
