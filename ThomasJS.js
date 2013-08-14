@@ -9,7 +9,7 @@ var ThomasJS = {
 		this.HEIGHT = this.canvas.height;
 		
 		this.elapsedTime = 0;
-		this.globalTime;
+		this.lastTime = 0;
 		this.dt;
 		
 		// initialise engineObjects
@@ -110,12 +110,9 @@ var ThomasJS = {
 		var clock = new Date();
 		var currentTime = clock.getTime();
 		
-		this.dt = currentTime - this.globalTime;
-		this.globalTime = currentTime;
-		
-		var thing = 0 + this.dt;
-		
-		console.log("elapsed time : " + thing );
+		this.dt = currentTime - this.lastTime;
+		this.lastTime = currentTime;
+		this.elapsedTime = 0 + this.dt;
 		
 	}
 	

@@ -27,7 +27,7 @@ GameObject.prototype = {
 		this.animationData.push(new Array(300, 2, true));	//  1 - walk 
 		this.animationData.push(new Array(600, 1, false));	// 	2 - interact
 	
-		this.animation = 1 ;
+		this.animation = 0 ;
 		this.frame = 0;
 		this.frameTime = 0;
 
@@ -88,8 +88,6 @@ GameObject.prototype = {
 		
 		this.frameTime += _dt;
 		
-		console.log(this.frameTime);
-		/*
 		if (this.frameTime > this.animationData[this.animation][0]){
 			this.frame ++;
 			if (this.frame < (this.animationData[this.animation][1])){
@@ -102,6 +100,6 @@ GameObject.prototype = {
 			}
 			this.frameTime = 0;
 		}
-		*/
+		
 	}
 }
