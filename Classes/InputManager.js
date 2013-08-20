@@ -2,17 +2,22 @@ var InputManager = function(){
 	
 }
 
+/* 
+ * Input manager needs to throw appropriate signals to the appropriate object 
+ */
+
 InputManager.prototype = {
 	
-	setup: function(_focus){
-		this.focusObject = _focus;
+	setup: function(_camera, _player){
+		this.camera = _camera;
+		this.player = _player;
 	},
 	
 	input: function(_evt){
 		
-		var inputObj = ThomasJS.inputManager.focusObject;
+		var inputObj = ThomasJS.inputManager.camera;
+		var player = ThomasJS.inputManager.player;
 		
-		var traceObject = ThomasJS.objManager.objects[1];	
 		//alert(_evt.keyCode);
 		
 		switch(_evt.keyCode){
@@ -33,7 +38,7 @@ InputManager.prototype = {
 				inputObj.input('down');
 				break;
 			case 13:
-				//traceObject.input('enter');
+				player.input('enter');
 				break;
 		}
 	}

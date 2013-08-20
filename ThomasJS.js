@@ -19,19 +19,12 @@ var ThomasJS = {
 		this.camera = Object.create(GameCamera.prototype);
 		this.camera.setup([0, 0, this.WIDTH, this.HEIGHT], [this.WIDTH/2, this.HEIGHT/2, this.WIDTH/2, this.HEIGHT/2]);
 		
-		this.inputManager = Object.create(InputManager.prototype);
-		this.inputManager.setup(this.camera);
-		
-		document.addEventListener('keydown', ThomasJS.inputManager.input, true);
-		
 		// load all the sprites
 		this.playerSprite = new Image();
 		this.playerSprite.src = 'Assets/StandWalkInteract.png';
 		
 		this.backgroundSprite = new Image();
 		this.backgroundSprite.src = 'Assets/House.png';
-		
-		
 		
 		// initalise the gameObjects
 		
@@ -86,6 +79,13 @@ var ThomasJS = {
 		bl2.setup(null, [-100,100, 20, 20], 'pink');
 		this.objManager.addObject(bl2);
 		*/
+		
+		
+		// CREATE THE INPUT MANAGER
+		this.inputManager = Object.create(InputManager.prototype);
+		this.inputManager.setup(this.camera, player);
+		
+		document.addEventListener('keydown', ThomasJS.inputManager.input, true);
 		
 		// set the loop
 		setInterval(ThomasJS.gameLoop, 33);

@@ -70,7 +70,8 @@ GameObject.prototype = {
 	},
 	
 	input:function(){
-		alert(this.dims);
+		this.animation = 1-this.animation;
+		this.frame = 0;
 	},
 	setDrawMask:function(_drawMask){
 		
