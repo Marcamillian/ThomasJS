@@ -6,6 +6,12 @@ ObjectManager.prototype = {
 	
 	setup: function(){
 		this.objects = [];
+	
+	},
+	
+	followVars: function(_camera, _player){
+		this.player = _player;
+		this.camera = _camera;
 	},
 	
 	addObject: function(_object){
@@ -18,6 +24,8 @@ ObjectManager.prototype = {
 			this.objects[i].update(_dt);
 			//this.objects[i].draw(ctx);
 		}
+		
+		this.camera.cameraBound(this.player.dims);
 		
 		return this.objects;
 	}, 

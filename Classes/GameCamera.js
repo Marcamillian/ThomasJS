@@ -39,10 +39,6 @@ GameCamera.prototype = {
 		// move to the center of the view & draw the center
 		_ctx.strokeStyle = 'green';		
 		_ctx.strokeRect( -(this.dims[2]/4)*this.scale[0],-(this.dims[3]/4)*this.scale[1], (this.dims[2]/2)*this.scale[0], (this.dims[3]/2)*this.scale[1] );
-		// draw a central cross hair
-		//_ctx.strokeStyle = 'black';
-		//_ctx.fillRect( 0,  0, 2 , 5);
-		//_ctx.fillRect( 0,  0, 5 , 2);
 		
 		// loop thrught drawing the objects
 		for ( var i=0; i < _objects.length; i++){
@@ -65,29 +61,6 @@ GameCamera.prototype = {
 			
 		}
 		
-		// draw a central cross hair
-		/*
-		_ctx.save();
-		_ctx.strokeStyle = 'black';
-		
-		_ctx.fillRect( 0,  0, 2 , 5);
-		_ctx.fillRect( 0,  0, 5 , 2);
-		
-		_ctx.fillRect( 50/2,  50/2, 2 , 5);
-		_ctx.fillRect( 50/2,  50/2, 5 , 2);
-		
-		_ctx.fillRect( -50/2,  -50/2, 2 , 5);
-		_ctx.fillRect( -50/2,  -50/2, 5 , 2);
-		
-		_ctx.fillRect( 50/2,  -50/2, 2 , 5);
-		_ctx.fillRect( -50/2,  50/2, 5 , 2);
-		
-		_ctx.fillRect( -50/2, 50/2, 2 , 5);
-		_ctx.fillRect( 50/2, -50/2, 5 , 2);
-		
-		_ctx.restore();
-		
-		*/
 		
 		_ctx.strokeStyle = 'black';
 		_ctx.strokeRect(-this.outputDims[2]/2, -this.outputDims[3]/2, this.outputDims[2], this.outputDims[3]); // - move to the right place
@@ -122,4 +95,35 @@ GameCamera.prototype = {
 				break;
 		}
 	},
+	
+	update: function(_focusPos){
+		this.cameraBound(_focusPos);
+	},
+	
+	cameraBound: function(_focusDims){ //follows the focus object if it leaves a bounding box
+		// do we need to do it to the postion or to the visible object limits??
+
+		// SET OUT THE BOUNDING BOX
+			// use global positioning  - need to reference camera width as well
+			
+		var bound = [	[ this.dims[0] - this.dims[2]/4  , this.dims[0] + this.dims[2]/4 ],
+						[ this.dims[1] - this.dims[3]/4  , this.dims[1] + this.dims[3]/4 ]
+					];
+		
+		
+		if (_focusDims[0] < bound[0][0]){
+			this.dims[0] -= 5;
+		} else if (_focusDims[0] > bound[0][1]){
+			this.dims[0] += 5;
+		}
+		
+		if (_focusDims[1] < bound[1][0]){
+			this.dims[1] -= 5;
+		} else if (_focusDims[1] > bound[1][1]){
+			this.dims[1] += 5;
+		}
+		
+		// compare it (x&y) to the focus objectPostion 
+		
+	}
 }
