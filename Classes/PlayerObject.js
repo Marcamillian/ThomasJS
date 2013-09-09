@@ -25,7 +25,7 @@ PlayerObject.prototype = {
 		this.animationData = new Array;
 		this.animationData.push(new Array(300, 1, true)); 	//  0 - stand
 		this.animationData.push(new Array(300, 2, true));	//  1 - walk 
-		this.animationData.push(new Array(600, 1, false));	// 	2 - interact
+		this.animationData.push(new Array(1200, 1, false));	// 	2 - interact
 	
 		this.animation = 0 ;
 		this.frame = 0;
@@ -93,24 +93,39 @@ PlayerObject.prototype = {
 	
 	kdInput:function(_value){
 		
+		// atm just 1 animation for any keystroke - would 
+		
+		var pressedAnim = 0;
+		
 		switch (_value){
 			
 			case 'up':
 				this.upPressed = true;
+				pressedAnim = 2;
 				break;
 			case 'down':
 				this.downPressed = true;
+				pressedAnim = 2;
 				break;
 			case 'left':
 				this.leftPressed = true;
+				pressedAnim = 1;
 				break;
 			case 'right':
 				this.rightPressed = true;
+				pressedAnim = 1;
 				break;
+		}
+		
+		if (this.animation != pressedAnim){
+			this.animation = pressedAnim;
+			this.frame = 0 ;
 		}
 	},
 	
 	kuInput:function(_value){
+		
+		var pressedAnim = 0;
 		
 		switch (_value){
 			
@@ -127,6 +142,12 @@ PlayerObject.prototype = {
 				this.rightPressed = false;
 				break;
 		}
+		
+		if(this.animation != pressedAnim){
+			this.animation = pressedAnim;
+			this.frame = 0;
+		}
+		
 	},
 	
 	setDrawMask:function(_drawMask){
