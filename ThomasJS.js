@@ -29,6 +29,14 @@ var ThomasJS = {
 		this.wMachineSprite = new Image();
 		this.wMachineSprite.src = 'Assets/WashingMachineSheet.png';
 		
+		
+		// load the JSON animation data
+		animationData = $.getJSON('Assets/animationData.xml', function(data){}	
+		);
+		
+		alert(animationData);
+		
+		
 		// initalise the gameObjects
 		
 		
