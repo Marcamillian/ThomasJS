@@ -23,14 +23,13 @@ PlayerObject.prototype = {
 		// animation references
 		// ANIMATION NAME = new array (FRAME-RATE(in ms), FRAMES, LOOP)
 		this.animationData = new Array;
-		this.animationData.push(new Array(300, 1, true)); 	//  0 - stand
+		this.animationData.push(new Array(300, 1, true)); 	//  0 - stand - default no animation
 		this.animationData.push(new Array(300, 2, true));	//  1 - walk 
 		this.animationData.push(new Array(1200, 1, false));	// 	2 - interact
 	
 		this.animation = 0 ;
 		this.frame = 0;
 		this.frameTime = 0;
-
 
 		// input variables
 		this.leftPressed = false;

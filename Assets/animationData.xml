@@ -1,0 +1,21 @@
+{"animations":[
+	{"player":[
+		{"walk":[
+			{"framerate": 300},
+			{"frames" : 2},
+			{"loop" : true} 
+		]},
+		{"interact":[
+			{"framerate" : 1200},
+			{"frames": 1},
+			{"loop": false}
+		]}
+	]},
+	{"washingMachine":[
+		{"on":[
+			{"framerate": 100},
+			{"frames": 4},
+			{"loop": true}
+		]}	
+	]}
+]}

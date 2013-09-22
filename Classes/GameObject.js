@@ -23,9 +23,8 @@ GameObject.prototype = {
 		// animation references
 		// ANIMATION NAME = new array (FRAME-RATE(in ms), FRAMES, LOOP)
 		this.animationData = new Array;
-		this.animationData.push(new Array(300, 1, true)); 	//  0 - stand
-		this.animationData.push(new Array(300, 2, true));	//  1 - walk 
-		this.animationData.push(new Array(600, 1, false));	// 	2 - interact
+		this.animationData.push(new Array(300, 1, true)); 	//  0 - off - defualt no animation
+		this.animationData.push(new Array(300, 4, true));	//  1 - on
 	
 		this.animation = 0 ;
 		this.frame = 0;

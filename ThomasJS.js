@@ -26,6 +26,9 @@ var ThomasJS = {
 		this.backgroundSprite = new Image();
 		this.backgroundSprite.src = 'Assets/House.png';
 		
+		this.wMachineSprite = new Image();
+		this.wMachineSprite.src = 'Assets/WashingMachineSheet.png';
+		
 		// initalise the gameObjects
 		
 		
@@ -38,6 +41,11 @@ var ThomasJS = {
 		player.setup(this.playerSprite, [0 , 0, 128, 256] , 'red');
 		this.objManager.addObject(player);
 		
+		var wMachine = Object.create(GameObject.prototype);
+		wMachine.setup(this.wMachineSprite, [0, 0, 100, 100], 'red');
+		this.objManager.addObject(wMachine);
+		
+		/*
 		var midPoint = Object.create(GameObject.prototype);
 		midPoint.setup(null, [0,0, 20, 20], 'green');
 		this.objManager.addObject(midPoint);
@@ -76,7 +84,7 @@ var ThomasJS = {
 		var bl2 = Object.create(GameObject.prototype);
 		bl2.setup(null, [-100,100, 20, 20], 'pink');
 		this.objManager.addObject(bl2);
-		
+		*/
 		
 		// CREATE THE INPUT MANAGER
 		this.inputManager = Object.create(InputManager.prototype);
