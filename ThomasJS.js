@@ -30,18 +30,22 @@ var ThomasJS = {
 		this.wMachineSprite.src = 'Assets/WashingMachineSheet.png';
 		
 		
-		var testObject = jQuery.parseJSON( '{"animations":[{"player":[{"walk":[{"framerate": 300},{"frames" : 2},{"loop" : true}]},{"interact":[{"framerate" : 1200},{"frames": 1},{"loop": false}]}]},{"washingMachine":[{"on":[{"framerate": 100},{"frames": 4},{"loop": true}]}	]}]}');
+		/*var testObject = jQuery.parseJSON( '{"animations":[{"player":[{"walk":[{"framerate": 300},{"frames" : 2},{"loop" : true}]},{"interact":[{"framerate" : 1200},{"frames": 1},{"loop": false}]}]},{"washingMachine":[{"on":[{"framerate": 100},{"frames": 4},{"loop": true}]}	]}]}');
 		alert( testObject.animations === "John" );
 		alert("something");
+		*/
+		
 		// load the JSON animation data
-		/*
+		
 		animationData =$.getJSON('Assets/animationData.xml',"something", function(data) {
 			
-			alert(data.animations[0].player);
-			alert("hello");
+			// 3 end results - framerate | frames | loop  - 
+			for( var i=0 ; i < 3 ; i++){
+				
+			}
+			
 		}
    		);
-   		*/
 		
 		// initalise the gameObjects
 		
