@@ -29,51 +29,24 @@ var ThomasJS = {
 		this.wMachineSprite = new Image();
 		this.wMachineSprite.src = 'Assets/WashingMachineSheet.png';
 		
-		
-		/*var testObject = jQuery.parseJSON( '{"animations":[{"player":[{"walk":[{"framerate": 300},{"frames" : 2},{"loop" : true}]},{"interact":[{"framerate" : 1200},{"frames": 1},{"loop": false}]}]},{"washingMachine":[{"on":[{"framerate": 100},{"frames": 4},{"loop": true}]}	]}]}');
-		alert( testObject.animations === "John" );
-		alert("something");
-		*/
-		
 		// load the JSON animation data
 		// ========================
 		
-		// CHECKING WE CAN REFERENCE BY KEY --> WORKS
-		//var animationData = {"one": 1,"two":2, "three": 3 };
-		//alert(animationData['two']);
-		
-		/*
-		var animationData = {"player": [
-								{"walk":[
-									{"framerate":300},
-									{"frames": 2},
-									{"loop": true}
-								]},
-								{"sit":[
-									{"framerate":1500},
-									{"frames": 1},
-									{"loop": false}
-								]}
-		]};
-		
-		alert(animationData["player"][0]["walk"][0]["framerate"]);
-		*/
-		
-		
 		$.getJSON('Assets/animationData.xml',"something", function(data) {
 						
-			//animationData = ThomasJS.animationData; // callback function happends outside the closure
-			//alert(data.animations[0]["player"][0]["walk"][0]["framerate"]);
-			//alert(data.animations[0]["player"][1]["interact"][0]["framerate"]);
-			
-			// 3 end results - framerate | frames | loop  - 
+			// sprite group loop 
 			for( var i=0 ; i < data.animations.length ; i++){
 				
-				var spriteKeys = Object.keys(data.animations[i]); alert("spriteKeys :" + spriteKeys);
+				// the sprite name
+				var spriteKey = Object.keys(data.animations[i]); alert("spriteKey :" + spriteKey);
 				
-				var animKeys = Object.keys(data.animations[i][ spriteKeys[0] ][0]); alert("animKeys : " + animKeys);
-				
-				//alert( "Other animKeys :" + Object.keys(data.animations[i]["player"][0]) );
+				// anim loop
+				for( var j=0 ; j < data.animations[i][spriteKey[0]].length ; j++){
+					var animKey = Object.keys(data.animations[i][ spriteKey[0] ][j]);
+					alert("animKey : " + animKey);
+					
+					//zz
+				}
 				
 			}
 			
