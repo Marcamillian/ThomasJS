@@ -42,7 +42,7 @@ var ThomasJS = {
 		//var animationData = {"one": 1,"two":2, "three": 3 };
 		//alert(animationData['two']);
 		
-		
+		/*
 		var animationData = {"player": [
 								{"walk":[
 									{"framerate":300},
@@ -56,26 +56,29 @@ var ThomasJS = {
 								]}
 		]};
 		
-		alert(animationData["player"][0]["walk"]);
-	
+		alert(animationData["player"][0]["walk"][0]["framerate"]);
+		*/
 		
 		
-		/*
 		$.getJSON('Assets/animationData.xml',"something", function(data) {
-			
-			animationData = ThomasJS.animationData; // callback function happends outside the closure
-			alert(data.animations['player']);
+						
+			//animationData = ThomasJS.animationData; // callback function happends outside the closure
+			//alert(data.animations[0]["player"][0]["walk"][0]["framerate"]);
+			//alert(data.animations[0]["player"][1]["interact"][0]["framerate"]);
 			
 			// 3 end results - framerate | frames | loop  - 
 			for( var i=0 ; i < data.animations.length ; i++){
 				
-				//var keys = Object.keys(data.animations)//Object.keys(data.animations[i]);
-				//alert(keys);
+				var spriteKeys = Object.keys(data.animations[i]); alert("spriteKeys :" + spriteKeys);
+				
+				var animKeys = Object.keys(data.animations[i][ spriteKeys[0] ][0]); alert("animKeys : " + animKeys);
+				
+				alert( "Other animKeys :" + Object.keys(data.animations[i]["player"][0]) );
+				
 			}
 			
-		}
-   		);
-   		*/
+		});
+   		
 		
 		// initalise the gameObjects
 		
