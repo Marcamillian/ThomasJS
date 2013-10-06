@@ -73,7 +73,7 @@ var ThomasJS = {
 				
 				var animKeys = Object.keys(data.animations[i][ spriteKeys[0] ][0]); alert("animKeys : " + animKeys);
 				
-				alert( "Other animKeys :" + Object.keys(data.animations[i]["player"][0]) );
+				//alert( "Other animKeys :" + Object.keys(data.animations[i]["player"][0]) );
 				
 			}
 			
