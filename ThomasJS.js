@@ -36,16 +36,46 @@ var ThomasJS = {
 		*/
 		
 		// load the JSON animation data
+		// ========================
 		
-		animationData =$.getJSON('Assets/animationData.xml',"something", function(data) {
+		// CHECKING WE CAN REFERENCE BY KEY --> WORKS
+		//var animationData = {"one": 1,"two":2, "three": 3 };
+		//alert(animationData['two']);
+		
+		
+		var animationData = {"player": [
+								{"walk":[
+									{"framerate":300},
+									{"frames": 2},
+									{"loop": true}
+								]},
+								{"sit":[
+									{"framerate":1500},
+									{"frames": 1},
+									{"loop": false}
+								]}
+		]};
+		
+		alert(animationData["player"][0]["walk"]);
+	
+		
+		
+		/*
+		$.getJSON('Assets/animationData.xml',"something", function(data) {
+			
+			animationData = ThomasJS.animationData; // callback function happends outside the closure
+			alert(data.animations['player']);
 			
 			// 3 end results - framerate | frames | loop  - 
-			for( var i=0 ; i < 3 ; i++){
+			for( var i=0 ; i < data.animations.length ; i++){
 				
+				//var keys = Object.keys(data.animations)//Object.keys(data.animations[i]);
+				//alert(keys);
 			}
 			
 		}
    		);
+   		*/
 		
 		// initalise the gameObjects
 		
