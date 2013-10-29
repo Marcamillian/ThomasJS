@@ -32,23 +32,37 @@ var ThomasJS = {
 		// load the JSON animation data
 		// ========================
 		
+		this.animationValues = [];
+		
+		
 		$.getJSON('Assets/animationData.xml',"something", function(data) {
-						
+			
+			ThomasJS.animationValues = data.animations;
+				
 			// sprite group loop 
 			for( var i=0 ; i < data.animations.length ; i++){
-				
+			
 				// the sprite name
-				var spriteKey = Object.keys(data.animations[i]); alert("spriteKey :" + spriteKey);
+				var spriteKey = Object.keys(data.animations[i]);
+				//alert("spriteKey :" + spriteKey);
 				
 				// anim loop
 				for( var j=0 ; j < data.animations[i][spriteKey[0]].length ; j++){
 					var animKey = Object.keys(data.animations[i][ spriteKey[0] ][j]);
-					alert("animKey : " + animKey);
+					//alert("animKey : " + animKey);
 					
-					//zz
+					animValues = data.animations[i][ spriteKey[0] ][j][ animKey[0] ];
+					
+					/*
+					ThomasJS.AnimationValues[spriteKey][animKey]["framerate"] = animValues[0]['framerate'];
+					ThomasJS.AnimationValues[spriteKey][animKey]["frames"] = animValues[0]['frames'];
+					ThomasJS.AnimationValues[spriteKey][animKey]["loop"] = animValues[0]['loop'];
+					*/
 				}
 				
 			}
+			
+			ThomasJS.getAnims("player", "walk");
 			
 		});
    		
@@ -148,8 +162,35 @@ var ThomasJS = {
 		this.lastTime = currentTime;
 		this.elapsedTime = 0 + this.dt;
 		
-	}
+	},
 	
+	getAnims: function(sprite, anim){
+		
+		var animData = ThomasJS.animationValues; // store the data in this closure
+		
+		// need to be able to get te index of the sprite / anim
+		var spriteKeys = [];
+		
+		for( var i=0 ; i < animData.length ; i++){
+			
+				// the sprite name
+				spriteKeys[i] = Object.keys(animData[i]);
+				
+				// anim loop
+				for( var j=0 ; j < animData[i][ spriteKeys[i] ].length ; j++){
+					//var spriteKeys[i][j] = Object.keys( animData[i][ spriteKeys[i] ][j] );
+					alert( spriteKeys[i] +" "+ j );
+					
+					alert( Object.keys( animData[i][ spriteKeys[i] ][j] ) ) ;
+					
+				}
+				
+		}
+			
+		//alert(spriteKeys[0][0]);
+		
+		//alert(animData[0][ sprite ][0][ anim ][0]["framerate"]);
+	}
 }
 
 
