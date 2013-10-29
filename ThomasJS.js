@@ -178,10 +178,9 @@ var ThomasJS = {
 				
 				// anim loop
 				for( var j=0 ; j < animData[i][ spriteKeys[i] ].length ; j++){
-					//var spriteKeys[i][j] = Object.keys( animData[i][ spriteKeys[i] ][j] );
-					alert( spriteKeys[i] +" "+ j );
 					
-					alert( Object.keys( animData[i][ spriteKeys[i] ][j] ) ) ;
+					//var spriteKeys[i][j] = Object.keys( animData[i][ spriteKeys[i] ][j] );
+					alert( spriteKeys[i] + " : "  + Object.keys( animData[i][ spriteKeys[i] ][j] ));
 					
 				}
 				
