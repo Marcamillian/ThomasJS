@@ -40,11 +40,12 @@ var ThomasJS = {
 			ThomasJS.animationValues = data.animations;
 
 			//alert(ThomasJS.getAnim("player", "walk"));
-			ThomasJS.getAnims("player");
+			//ThomasJS.getAnims("player");
 		});
    		
 		
 		// initalise the gameObjects
+		//getJSON runs later getAnims has no value
 		
 		var background = Object.create(GameObject.prototype);
 		background.setup(this.backgroundSprite, [ 0, 0, 2400, 728] , 'red');
@@ -52,11 +53,11 @@ var ThomasJS = {
 		
 		
 		var player = Object.create(PlayerObject.prototype);
-		player.setup(this.playerSprite, [0 , 0, 128, 256] , 'red');
+		player.setup(this.playerSprite, [0 , 0, 128, 256] , 'red', ThomasJS.getAnims("player"));
 		this.objManager.addObject(player);
 		
 		var wMachine = Object.create(GameObject.prototype);
-		wMachine.setup(this.wMachineSprite, [0, 0, 100, 100], 'red');
+		wMachine.setup(this.wMachineSprite, [0, 0, 100, 100], 'red', ThomasJS.getAnims("washingMachine"));
 		this.objManager.addObject(wMachine);
 		
 		// CREATE THE INPUT MANAGER
