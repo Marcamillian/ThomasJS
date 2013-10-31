@@ -6,9 +6,7 @@ GameObject.prototype = {
 	
 	images:1, // Array of all the character images in the game - ordered into an xml document?
 	
-	setup:function(_image, _dims, _color, _anims){
-		
-		alert(_anims);
+	setup:function(_image, _dims, _color){//, _anims){
 		
 		this.dims = _dims;
 

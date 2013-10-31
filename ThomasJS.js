@@ -53,11 +53,11 @@ var ThomasJS = {
 		
 		
 		var player = Object.create(PlayerObject.prototype);
-		player.setup(this.playerSprite, [0 , 0, 128, 256] , 'red', ThomasJS.getAnims("player"));
+		player.setup(this.playerSprite, [0 , 0, 128, 256] , 'red');//, ThomasJS.getAnims("player"));
 		this.objManager.addObject(player);
 		
 		var wMachine = Object.create(GameObject.prototype);
-		wMachine.setup(this.wMachineSprite, [0, 0, 100, 100], 'red', ThomasJS.getAnims("washingMachine"));
+		wMachine.setup(this.wMachineSprite, [-513, 270, 100, 100], 'red');//, ThomasJS.getAnims("washingMachine"));
 		this.objManager.addObject(wMachine);
 		
 		// CREATE THE INPUT MANAGER
