@@ -169,12 +169,16 @@ var ThomasJS = {
 		var animData = ThomasJS.animationValues; // store the data in this closure
 		
 		// need to be able to get te index of the sprite / anim
-		var spriteKeys = [];
+		var spriteKeys = new Array(animData.length); // used 'new Array' so that you get ['',''] rather than [2]
+		alert("sprites : " + spriteKeys.length);
+		
 		
 		for( var i=0 ; i < animData.length ; i++){
 			
 				// the sprite name
 				spriteKeys[i] = Object.keys(animData[i]);
+				alert("our sprite Keys : " + spriteKeys);
+				//spriteKeys[i] = new Array(animData[i][ spriteKeys[i] ].length);
 				
 				// anim loop
 				for( var j=0 ; j < animData[i][ spriteKeys[i] ].length ; j++){
@@ -185,6 +189,8 @@ var ThomasJS = {
 				}
 				
 		}
+		
+		//alert("something : " + spriteKeys[0][0]);
 			
 		//alert(spriteKeys[0][0]);
 		
