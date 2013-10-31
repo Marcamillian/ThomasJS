@@ -35,7 +35,7 @@ var ThomasJS = {
 		this.animationValues = [];
 		
 		
-		$.getJSON('Assets/animationData.xml',"something", function(data) {
+		$.getJSON('Data/animationData.xml',"something", function(data) {
 			
 			ThomasJS.animationValues = data.animations;
 
@@ -93,6 +93,10 @@ var ThomasJS = {
 		this.dt = currentTime - this.lastTime;
 		this.lastTime = currentTime;
 		this.elapsedTime = 0 + this.dt;
+		
+	},
+	
+	objectInit: function(){
 		
 	},
 	

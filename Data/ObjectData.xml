@@ -1,0 +1,39 @@
+{"level1":[
+	{"background":[
+		{"sprite": "this.backgroundSprite"},
+		{"position":[
+			{"xPos":0},
+			{"yPos":0}
+		]},
+		{"size": [
+			{"width": 2400},
+			{"height": 728}
+		]},
+		{"color":"red"}
+	]},
+	{"player":[
+		{"sprite": "this.backgroundSprite"},
+		{"position":[
+			{"xPos":0},
+			{"yPos":0}
+		]},
+		{"size": [
+			{"width": 128},
+			{"height": 256}
+		]},
+		{"color":"red"}
+	]},
+	{"wMachine":[
+		{"sprite": "this.backgroundSprite"},
+		{"position":[
+			{"xPos":-513},
+			{"yPos":270}
+		]},
+		{"size": [
+			{"width": 100},
+			{"height": 100}
+		]},
+		{"color":"red"}
+	]}
+
+]}

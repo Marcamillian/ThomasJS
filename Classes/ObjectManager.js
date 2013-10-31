@@ -122,11 +122,11 @@ ObjectManager.prototype = {
 					
 					
 				}else{
-					console.log("lost it vert");
+					//console.log("lost it vert");
 				}
 				
 			}else{
-				console.log("lost it horiz");
+				//console.log("lost it horiz");
 			}
 			
 		}
