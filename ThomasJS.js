@@ -39,8 +39,8 @@ var ThomasJS = {
 			
 			ThomasJS.animationValues = data.animations;
 
-			alert(ThomasJS.getAnims("player", "walk"));
-			
+			//alert(ThomasJS.getAnim("player", "walk"));
+			ThomasJS.getAnims("player");
 		});
    		
 		
@@ -95,7 +95,7 @@ var ThomasJS = {
 		
 	},
 	
-	getAnims: function(_spriteSearch, _animSearch){
+	getAnim: function(_spriteSearch, _animSearch){
 		
 		var animData = ThomasJS.animationValues; 
 		
@@ -128,6 +128,31 @@ var ThomasJS = {
 		
 		return returnValues;
 		
+	},
+	
+	getAnims: function(_spriteSearch){
+		var animData = ThomasJS.animationValues;
+		
+		var spriteIndex = null;
+		
+		for( var i=0; i < animData.length; i++){
+			if (Object.keys(animData[i]) == _spriteSearch){
+				spriteIndex = i;
+				
+				var anims = new Array();
+				
+				for (var j=0; j < animData[spriteIndex][ _spriteSearch ].length; j++){
+					
+					var animName = Object.keys( animData[spriteIndex][_spriteSearch][j]);
+					var valuePath = animData[spriteIndex][_spriteSearch][j][animName];
+					var animValues = [ valuePath[0]['framerate'], valuePath[1]['frames'], valuePath[2]['loop'] ];
+					
+					anims.push(animValues);
+				}
+				
+			}
+		}
+		return anims;	
 	}
 }
 
