@@ -33,14 +33,16 @@ var ThomasJS = {
 		// ========================
 		
 		this.animationValues = [];
-		
-		
 		$.getJSON('Data/animationData.xml',"something", function(data) {
-			
 			ThomasJS.animationValues = data.animations;
-
 			//alert(ThomasJS.getAnim("player", "walk"));
 			//ThomasJS.getAnims("player");
+		});
+		
+		this.objectData = [];
+		$.getJSON('Data/ObjectData.xml', "somethingElse", function(data) {
+			ThomasJS.objectData = data.level_objects;
+			alert(ThomasJS.getJSON(ThomasJS.objectData, "background", "sprite"));
 		});
    		
 		
@@ -158,7 +160,42 @@ var ThomasJS = {
 			}
 		}
 		return anims;	
-	}
+	},
+	
+	getJSON: function(_source, _targetObject, _targetVariable){
+		
+		var sourceData = _source; 
+		
+		var objectIndex = null;
+		var variableIndex = null;
+		
+		//search for sprite index
+		for( var i=0 ; i < sourceData.length ; i++){
+			if ( Object.keys(sourceData[i]) == _targetObject ){
+				objectIndex = i;
+				
+				for ( var j=0; j < sourceData[objectIndex][ _targetObject ].length; j++){
+					if ( Object.keys( sourceData[objectIndex][_targetObject][j] ) == _targetVariable){
+						variableIndex = j;
+						break;
+					}
+					
+				}
+				
+				break;
+				
+			} else{
+				alert("sprite not found");
+			}
+		}
+		
+		var searchReturn = sourceData[objectIndex][_targetObject][variableIndex][_targetVariable];
+		
+		var returnValues = [ searchReturn[0]['framerate'], searchReturn[1]['frames'], searchReturn[2]['loop'] ];
+		
+		return searchReturn;
+		
+	},
 }
 
 

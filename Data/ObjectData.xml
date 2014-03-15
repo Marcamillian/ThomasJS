@@ -1,6 +1,6 @@
-{"level1":[
+{"level_objects":[
 	{"background":[
-		{"sprite": "this.backgroundSprite"},
+		{"sprite": "backgroundSprite"},
 		{"position":[
 			{"xPos":0},
 			{"yPos":0}
