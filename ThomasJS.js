@@ -45,6 +45,11 @@ var ThomasJS = {
 			alert(ThomasJS.getJSON(ThomasJS.objectData, "background", "sprite"));
 		});
    		
+   		this.sprites = [];
+		$.getJSON('Data/sprites.xml', "somethingToo", function(data) {
+			ThomasJS.sprites = data.level_sprites;
+			alert("something");//data.level_sprites);
+		});
 		
 		// initalise the gameObjects
 		//getJSON runs later getAnims has no value
