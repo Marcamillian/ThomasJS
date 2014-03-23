@@ -44,6 +44,7 @@ var ThomasJS = {
 			console.log("load in visual Data (sprite & anim)");
 		});
 		
+		//console.log("found the item : " + this.findData(this.visData, ["player"]));
 		// initalise the gameObjects
 		//getJSON runs later getAnims has no value
 		
@@ -160,9 +161,15 @@ var ThomasJS = {
 		return anims;	
 	},
 	
-	getJSON: function(_source, _targetObject, _targetVariable){
+	pullJSON: function(_source, _targetObject, _targetVariable){
 		
 		var sourceData = _source; 
+		
+		// trying to make it look for a particular value
+		for (var i=0; i++; i > _targetObject.length){
+			console.log(i);
+			i++;
+		}
 		
 		var objectIndex = null;
 		var variableIndex = null;
@@ -194,6 +201,22 @@ var ThomasJS = {
 		return searchReturn;
 		
 	},
+	findData: function(_source, _targetObjects){
+		
+		for (var t =0; t < _targetObjects.length; t++){
+			var sourceData = _source;
+			
+			for (var i=0; i < sourceData.length; i++){
+				if (Object.keys(sourceData[i]) == _targetObjects[t]){
+					sourceData = sourceData[i][_targetObjects[t]];
+				}else{
+					console.log("can't find it");
+				}
+			}
+		}
+		
+		return sourceData;
+	} 
 }
 
 
