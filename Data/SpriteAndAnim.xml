@@ -1,0 +1,36 @@
+{"visual_data":[
+	{"player":[
+		{"anim_sprite": "Assets/StandWalkInteract.png"},
+	    {"anim_data":[
+			{"framerate": 300},
+			{"frames" : 2},
+			{"loop" : true}, 
+		
+			{"walk":[
+				{"framerate": 300},
+				{"frames" : 2},
+				{"loop" : true} 
+			]},
+			{"interact":[
+				{"framerate" : 1200},
+				{"frames": 1},
+				{"loop": false}
+			]}
+		]}
+	]},
+	{"background":[
+		{"anim_sprite": "Assets/House.png"},
+		{"anim_data":[]}
+	]},
+	{"washingMachine":[
+		{"anim_sprite": "Assets/WashingMachineSheet.png"},
+		{"anim_data":[
+			{"on":[
+				{"framerate": 100},
+				{"frames": 4},
+				{"loop": true}
+			]}	
+		]}
+	]}
+]}
+

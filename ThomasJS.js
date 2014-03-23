@@ -31,24 +31,17 @@ var ThomasJS = {
 		
 		// load the JSON animation data
 		// ========================
-		
-		this.animationValues = [];
-		$.getJSON('Data/animationData.xml',"something", function(data) {
-			ThomasJS.animationValues = data.animations;
-			//alert(ThomasJS.getAnim("player", "walk"));
-			//ThomasJS.getAnims("player");
-		});
-		
+
 		this.objectData = [];
 		$.getJSON('Data/ObjectData.xml', "somethingElse", function(data) {
 			ThomasJS.objectData = data.level_objects;
-			alert(ThomasJS.getJSON(ThomasJS.objectData, "background", "sprite"));
+			console.log("load Object Data");
 		});
    		
-   		this.sprites = [];
-		$.getJSON('Data/sprites.xml', "somethingToo", function(data) {
-			ThomasJS.sprites = data.level_sprites;
-			alert("something");//data.level_sprites);
+		this.visData = [];
+		$.getJSON('Data/SpriteAndAnim.xml', "somethingTooToo", function(data) {
+			ThomasJS.visData = data.visual_data;
+			console.log("load in visual Data (sprite & anim)");
 		});
 		
 		// initalise the gameObjects
