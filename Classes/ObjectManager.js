@@ -20,7 +20,7 @@ ObjectManager.prototype = {
 	
 	update: function(_dt){
 		
-		console.log("found the item : " + ThomasJS.findData(ThomasJS.visData, ["player"]));
+		console.log("found the item : " + ThomasJS.findData(ThomasJS.visData, ["player","anim_sprite"]));
 		
 		for ( var i=0; i < this.objects.length; i++){
 			this.objects[i].update(_dt);

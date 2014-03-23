@@ -203,19 +203,28 @@ var ThomasJS = {
 	},
 	findData: function(_source, _targetObjects){
 		
-		for (var t =0; t < _targetObjects.length; t++){
-			var sourceData = _source;
+		var sourceData = _source;	// set the initial JSON object to look into
+		
+		for (var t =0; t < _targetObjects.length; t++){ // looping through the _targetObjects array - going down levels in the data
 			
-			for (var i=0; i < sourceData.length; i++){
+			for (var i=0; i < sourceData.length; i++){ // looping through
+				console.log(Object.keys(sourceData[i]) + " - does it equal - " + _targetObjects[t]);
 				if (Object.keys(sourceData[i]) == _targetObjects[t]){
 					sourceData = sourceData[i][_targetObjects[t]];
+					console.log("yes");
+					break;
 				}else{
-					console.log("can't find it");
+					console.log("can't find " + _targetObjects[t]);
+					break;
 				}
 			}
 		}
 		
-		return sourceData;
+		if (sourceData == _source)
+			return "couldn't find '" + _targetObjects[t] + "'";
+		else
+			return sourceData;
+			
 	} 
 }
 
