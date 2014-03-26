@@ -209,31 +209,28 @@ var ThomasJS = {
 		
 		for (var t =0; t < _targetObjects.length; t++){ // looping through the _targetObjects array - going down levels in the data
 			
-			console.log("object : " + _targetObjects[t]);
+			// == debug comp target value === console.log("object : " + _targetObjects[t]);
 			
+			for (var i=0; i < sourceData.length; i++){ // looping through sourceData keys
+			
+			//=== debug comp sourceData value === console.log("source comparison : " + Object.keys(sourceData[i]));
+
+				if (_targetObjects[t] == Object.keys(sourceData[i])){
+					sourceData = sourceData[i][_targetObjects[t]];
+					//=== debug comp match confirm === console.log("yes");
+					break;
+				}
+			}
 		}
 		
-		for (var i=0; i < sourceData.length; i++){ // looping through sourceData keys
-			//console.log(Object.keys(sourceData[i]) + " - does it equal - " + _targetObjects[t]);
-			//console.log(Object.keys(sourceData.length))
-			
-			console.log("source comparison : " + Object.keys(sourceData[i]));
-			/*if (i == sourceData.length){
-				sourceData = sourceData[i][_targetObjects[t]]
-			}*/
-			//if (Object.keys(sourceData[t]) == _targetObjects[i]){
-				//sourceData = sourceData[i][_targetObjects[t]];
-				//console.log("yes");
-				//break;
-			//}
-		}
 		
-		/*
+		
+		
 		if (sourceData == _source)
 			return "couldn't find '" + _targetObjects[t] + "'";
 		else
 			return sourceData;
-			*/
+			
 			
 	} 
 }
