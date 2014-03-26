@@ -205,25 +205,35 @@ var ThomasJS = {
 		
 		var sourceData = _source;	// set the initial JSON object to look into
 		
+		//console.log("something : " + _targetObjects[0]);
+		
 		for (var t =0; t < _targetObjects.length; t++){ // looping through the _targetObjects array - going down levels in the data
 			
-			for (var i=0; i < sourceData.length; i++){ // looping through
-				console.log(Object.keys(sourceData[i]) + " - does it equal - " + _targetObjects[t]);
-				if (Object.keys(sourceData[i]) == _targetObjects[t]){
-					sourceData = sourceData[i][_targetObjects[t]];
-					console.log("yes");
-					break;
-				}else{
-					console.log("can't find " + _targetObjects[t]);
-					break;
-				}
-			}
+			console.log("object : " + _targetObjects[t]);
+			
 		}
 		
+		for (var i=0; i < sourceData.length; i++){ // looping through sourceData keys
+			//console.log(Object.keys(sourceData[i]) + " - does it equal - " + _targetObjects[t]);
+			//console.log(Object.keys(sourceData.length))
+			
+			console.log("source comparison : " + Object.keys(sourceData[i]));
+			/*if (i == sourceData.length){
+				sourceData = sourceData[i][_targetObjects[t]]
+			}*/
+			//if (Object.keys(sourceData[t]) == _targetObjects[i]){
+				//sourceData = sourceData[i][_targetObjects[t]];
+				//console.log("yes");
+				//break;
+			//}
+		}
+		
+		/*
 		if (sourceData == _source)
 			return "couldn't find '" + _targetObjects[t] + "'";
 		else
 			return sourceData;
+			*/
 			
 	} 
 }
