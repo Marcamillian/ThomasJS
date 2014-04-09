@@ -21,15 +21,16 @@ ObjectManager.prototype = {
 	update: function(_dt){
 		
 		// === debug ThomasJS.getData === Aconsole.log("found the item : " + ThomasJS.findData(ThomasJS.visData, ["washingMachine","anim_data","on","framerate"]));
-		
+		/*
 		for ( var i=0; i < this.objects.length; i++){
 			this.objects[i].update(_dt);
 			//this.objects[i].draw(ctx);
 		}
 		
 		this.camera.cameraBound(this.player.dims);
-		
+		*/
 		return this.objects;
+		
 	}, 
 	
 	getObjects: function(_viewDims){
