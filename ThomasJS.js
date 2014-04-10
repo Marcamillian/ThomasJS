@@ -40,32 +40,15 @@ var ThomasJS = {
 		$.getJSON('Data/Level1.xml', "somethingElse", function(data) {
 			ThomasJS.objectData = data.level_objects;
 			console.log("load Level1 Data");
-			ThomasJS.initLevel();
+			ThomasJS.initLevel(); //initiate the objects
 		});
 	},
 	
 	initLevel: function(){
 		
-		alert("did this work" + this.objectData);
-		/*
-		var background = Object.create(GameObject.prototype);
-		background.setup(this.backgroundSprite, [ 0, 0, 2400, 728] , 'red');
-		this.objManager.addObject(background);
+		//alert("did this work" + this.objectData);
 		
-		
-		var player = Object.create(PlayerObject.prototype);
-		player.setup(this.playerSprite, [0 , 0, 128, 256] , 'red');//, ThomasJS.getAnims("player"));
-		this.objManager.addObject(player);
-		
-		var wMachine = Object.create(GameObject.prototype);
-		wMachine.setup(this.wMachineSprite, [-513, 270, 100, 100], 'red');//, ThomasJS.getAnims("washingMachine"));
-		this.objManager.addObject(wMachine);
-		
-		// set the player & camera variables in the object manager
-		this.objManager.followVars(this.camera, player);
-		
-		
-		// Load all the images
+				// Load all the images
 		this.playerSprite = new Image();
 		this.playerSprite.src = 'Assets/StandWalkInteract.png';
 		
@@ -74,8 +57,27 @@ var ThomasJS = {
 		
 		this.wMachineSprite = new Image();
 		this.wMachineSprite.src = 'Assets/WashingMachineSheet.png';
-		*/
 		
+		
+		var background = Object.create(GameObject.prototype);
+		background.setup(this.backgroundSprite, [ 0, 0, 2400, 728] );
+		this.objManager.addObject(background);
+		
+		
+		var player = Object.create(PlayerObject.prototype);
+		player.setup(this.playerSprite, [0 , 0, 128, 256] );//, ThomasJS.getAnims("player"));
+		this.objManager.addObject(player);
+		
+		var wMachine = Object.create(GameObject.prototype);
+		wMachine.setup(this.wMachineSprite, [-513, 270, 100, 100] );//, ThomasJS.getAnims("washingMachine"));
+		this.objManager.addObject(wMachine);
+		
+		// set the player & camera variables in the object manager
+		this.objManager.followVars(this.camera, player);
+		
+		console.log(this.findData(["washingMachine","position"]));
+		
+		this.inputManager.setup(this.camera, player);
 	},
 	gameLoop: function(){
 		
@@ -101,12 +103,11 @@ var ThomasJS = {
 		
 	},
 	
-	findData: function(_source, _targetObjects){
+	findData: function(_targetObjects){
 		
-		var sourceData = _source;	// set the initial JSON object to look into
-		
+		var sourceData = this.objectData;	// set the initial JSON object to look into
 		//console.log("something : " + _targetObjects[0]);
-		
+
 		for (var t =0; t < _targetObjects.length; t++){ // looping through the _targetObjects array - going down levels in the data
 			
 			// == debug comp target value === console.log("object : " + _targetObjects[t]);
@@ -126,8 +127,8 @@ var ThomasJS = {
 		
 		
 		
-		if (sourceData == _source)
-			return "couldn't find '" + _targetObjects[t] + "'";
+		if (sourceData == this.objectData)
+			console.log("couldn't find '" + _targetObjects[t] + "'");
 		else
 			return sourceData;
 			

@@ -6,7 +6,7 @@ PlayerObject.prototype = {
 	
 	images:1, // Array of all the character images in the game - ordered into an xml document?
 	
-	setup:function(_image, _dims, _color){
+	setup:function(_image, _dims){
 		 	
 		this.dims = _dims;
 
@@ -14,7 +14,7 @@ PlayerObject.prototype = {
 			this.image = _image;
 			this.draw = this.imageDraw;
 		}else{
-			this.color = _color;
+			this.color = 'red';
 			this.draw = this.shapeDraw;
 		}
 		
