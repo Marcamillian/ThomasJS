@@ -1,0 +1,23 @@
+{"level_instances":[
+	{"player":[
+		{"one":[
+			{"xPos":0},
+			{"yPos":0}
+		]},
+	]},
+	{"testObject":[
+		{"one":[
+			{"xPos":10},
+			{"yPos":10}
+		]},
+		{"two":[
+			{"xPos":20},
+			{"yPos":20}
+		]},
+		{"three":[
+			{"xPos":30},
+			{"yPos":30}
+		]},
+	]}
+}
+		

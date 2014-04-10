@@ -55,6 +55,18 @@
 				{"loop": true}
 			]}	
 		]}
+	]},
+	{"testObject":[
+		{"position":[
+			{"xPos":50},
+			{"yPos":50}
+		]},
+		{"size": [
+			{"width": 30},
+			{"height": 30}
+		]},
+		{"anim_sprite": "Assets/TestObject.png"},
+		{"anim_data":[]}
 	]}
 ]}
 

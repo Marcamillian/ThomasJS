@@ -48,7 +48,7 @@ var ThomasJS = {
 		
 		//alert("did this work" + this.objectData);
 		
-				// Load all the images
+			// Load all the images
 		this.playerSprite = new Image();
 		this.playerSprite.src = 'Assets/StandWalkInteract.png';
 		
@@ -59,10 +59,10 @@ var ThomasJS = {
 		this.wMachineSprite.src = 'Assets/WashingMachineSheet.png';
 		
 		
+			// initiate the 
 		var background = Object.create(GameObject.prototype);
 		background.setup(this.backgroundSprite, [ 0, 0, 2400, 728] );
 		this.objManager.addObject(background);
-		
 		
 		var player = Object.create(PlayerObject.prototype);
 		player.setup(this.playerSprite, [0 , 0, 128, 256] );//, ThomasJS.getAnims("player"));
@@ -72,12 +72,19 @@ var ThomasJS = {
 		wMachine.setup(this.wMachineSprite, [-513, 270, 100, 100] );//, ThomasJS.getAnims("washingMachine"));
 		this.objManager.addObject(wMachine);
 		
-		// set the player & camera variables in the object manager
+		
+		
+		 	// set the player & camera variables in the object manager
 		this.objManager.followVars(this.camera, player);
-		
-		console.log(this.findData(["washingMachine","position"]));
-		
+			// setup the input so camera follows player
 		this.inputManager.setup(this.camera, player);
+		
+		
+		
+			// testing findData
+		console.log(this.findData(["testObject"]));
+			//testing the factory object
+		this.objectFactory("washingMachine", "something");
 	},
 	gameLoop: function(){
 		
@@ -124,16 +131,24 @@ var ThomasJS = {
 			}
 		}
 		
-		
-		
-		
 		if (sourceData == this.objectData)
 			console.log("couldn't find '" + _targetObjects[t] + "'");
 		else
-			return sourceData;
+			return sourceData;	
+	},
+	
+	objectFactory: function(_objectName, _position){
+		switch (_objectName){
+			case "player":
+				console.log("case 1");
+				break;
+			case "washingMachine":
+				console.log("case 2");
+				break;
+		}
+		
 			
-			
-	} 
+	},
 }
 
 
