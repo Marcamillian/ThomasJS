@@ -86,7 +86,17 @@ var ThomasJS = {
 			var objType = Object.keys(this.objectInstances[n]);
 			
 			//runs once for each type of object -
-			this.objectFactory(objType[0], [0,0]);
+			/* ??? Working here - trying to get the loop instances of objType
+			for (var i=0; i < this.objectInstances[n].length; i++){
+				
+				var position = Array(	this.findData(this.objectInstances, [objType[0], 1,"xPos"]),
+										this.findData(this.objectInstances, [objType[0], 1, "yPos"])
+									);
+				console.log ( objType + " " + i + " : " + position);
+				*/
+				this.objectFactory(objType[0], [0,0]);
+			//}
+			//console.log(this.findData(this.objectInstances, [objType[0], 1,"xPos"]));
 		}
 		
 		 	// set the player & camera variables in the object manager
@@ -121,9 +131,9 @@ var ThomasJS = {
 		
 	},
 	
-	findData: function(_targetObjects){
+	findData: function(_sourceData, _targetObjects){
 		
-		var sourceData = this.objectData;	// set the initial JSON object to look into
+		var sourceData = _sourceData;	// set the initial JSON object to look into
 		//console.log("something : " + _targetObjects[0]);
 
 		for (var t =0; t < _targetObjects.length; t++){ // looping through the _targetObjects array - going down levels in the data
@@ -142,39 +152,35 @@ var ThomasJS = {
 			}
 		}
 		
-		if (sourceData == this.objectData)
+		// need to check against levels -- length?
+		if (sourceData == _sourceData)
 			console.log("couldn't find '" + _targetObjects[t] + "'");
 		else
 			return sourceData;	
 	},
 	
 	objectFactory: function(_objectName, _position){
-		console.log(" ==== OPEN factory function ===");
+		
 		switch (_objectName){
 			case "player":
-				console.log(" > make player");
 				this.player = Object.create(PlayerObject.prototype);
 				this.player.setup(this.playerSprite, [0 , 0, 128, 256] );//, ThomasJS.getAnims("player"));
 				this.objManager.addObject(this.player);
-				console.log("> make player");
 				break;
 			case "washingMachine":
-				console.log("> make washingMachine");
 				break;
 			case "testObject":
-				console.log("> make testObject");
 				var test = Object.create(GameObject.prototype);
 				
 				var position = new Array(	_position[0],
 											_position[1],
-											this.findData(["testObject", "size", "width"]),
-											this.findData(["testObject", "size", "height"])
+											this.findData(this.objectData,["testObject", "size", "width"]),
+											this.findData(this.objectData,["testObject", "size", "height"])
 										);				
 				test.setup(this.testObjectSprite, position);
 				this.objManager.addObject(test);
 				break;
 		}
-		console.log(" ==== CLOSE factory function ====");
 		
 			
 	},
