@@ -40,7 +40,14 @@ var ThomasJS = {
 		$.getJSON('Data/Level1.xml', "somethingElse", function(data) {
 			ThomasJS.objectData = data.level_objects;
 			console.log("load Level1 Data");
-			ThomasJS.initLevel(); //initiate the objects
+			//ThomasJS.initLevel(); //initiate the objects
+		});
+		
+		this.objectInstances = [];
+		$.getJSON('Data/Level1_Instances.xml', "something", function(data){
+			ThomasJS.objectInstances = data.level_instances;
+			console.log("load Level Instances");
+			ThomasJS.initLevel();
 		});
 	},
 	
@@ -58,33 +65,41 @@ var ThomasJS = {
 		this.wMachineSprite = new Image();
 		this.wMachineSprite.src = 'Assets/WashingMachineSheet.png';
 		
+		this.testObjectSprite = new Image();
+		this.testObjectSprite.src = 'Assets/TestObject.png';
+		
+		
+		
 		
 			// initiate the 
 		var background = Object.create(GameObject.prototype);
 		background.setup(this.backgroundSprite, [ 0, 0, 2400, 728] );
 		this.objManager.addObject(background);
 		
-		var player = Object.create(PlayerObject.prototype);
-		player.setup(this.playerSprite, [0 , 0, 128, 256] );//, ThomasJS.getAnims("player"));
-		this.objManager.addObject(player);
-		
 		var wMachine = Object.create(GameObject.prototype);
 		wMachine.setup(this.wMachineSprite, [-513, 270, 100, 100] );//, ThomasJS.getAnims("washingMachine"));
 		this.objManager.addObject(wMachine);
 		
-		
+		for (var n=0; n < this.objectInstances.length; n++){
+			
+			// find the key so we know the object we are init-ing
+			var objType = Object.keys(this.objectInstances[n]);
+			
+			//runs once for each type of object -
+			this.objectFactory(objType[0], [0,0]);
+		}
 		
 		 	// set the player & camera variables in the object manager
-		this.objManager.followVars(this.camera, player);
+		this.objManager.followVars(this.camera, this.player);
 			// setup the input so camera follows player
-		this.inputManager.setup(this.camera, player);
+		this.inputManager.setup(this.camera, this.player);
 		
 		
 		
 			// testing findData
-		console.log(this.findData(["testObject"]));
+		//console.log(this.findData(["player"]));
 			//testing the factory object
-		this.objectFactory("washingMachine", "something");
+		//this.objectFactory("washingMachine", "something");
 	},
 	gameLoop: function(){
 		
@@ -103,10 +118,6 @@ var ThomasJS = {
 		this.dt = currentTime - this.lastTime;
 		this.lastTime = currentTime;
 		this.elapsedTime = 0 + this.dt;
-		
-	},
-	
-	objectInit: function(){
 		
 	},
 	
@@ -138,14 +149,32 @@ var ThomasJS = {
 	},
 	
 	objectFactory: function(_objectName, _position){
+		console.log(" ==== OPEN factory function ===");
 		switch (_objectName){
 			case "player":
-				console.log("case 1");
+				console.log(" > make player");
+				this.player = Object.create(PlayerObject.prototype);
+				this.player.setup(this.playerSprite, [0 , 0, 128, 256] );//, ThomasJS.getAnims("player"));
+				this.objManager.addObject(this.player);
+				console.log("> make player");
 				break;
 			case "washingMachine":
-				console.log("case 2");
+				console.log("> make washingMachine");
+				break;
+			case "testObject":
+				console.log("> make testObject");
+				var test = Object.create(GameObject.prototype);
+				
+				var position = new Array(	_position[0],
+											_position[1],
+											this.findData(["testObject", "size", "width"]),
+											this.findData(["testObject", "size", "height"])
+										);				
+				test.setup(this.testObjectSprite, position);
+				this.objManager.addObject(test);
 				break;
 		}
+		console.log(" ==== CLOSE factory function ====");
 		
 			
 	},

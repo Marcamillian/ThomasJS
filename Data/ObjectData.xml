@@ -8,8 +8,7 @@
 		{"size": [
 			{"width": 2400},
 			{"height": 728}
-		]},
-		{"color":"red"}
+		]}
 	]},
 	{"player":[
 		{"sprite": "this.backgroundSprite"},
@@ -20,8 +19,7 @@
 		{"size": [
 			{"width": 128},
 			{"height": 256}
-		]},
-		{"color":"red"}
+		]}
 	]},
 	{"wMachine":[
 		{"sprite": "this.backgroundSprite"},
@@ -32,8 +30,18 @@
 		{"size": [
 			{"width": 100},
 			{"height": 100}
+		]}
+	]},
+	{"testObject"[
+		{"sprite": "this.testObjectSprite"},
+		{"position":[
+			{"xPos": 20},
+			{"yPos": 20}
 		]},
-		{"color":"red"}
+		{"size":[
+			{"width":30},
+			{height":30}
+		]}
 	]}
 
 ]}
