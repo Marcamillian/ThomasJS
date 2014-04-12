@@ -17,7 +17,7 @@ var ThomasJS = {
 		this.objManager.setup();
 		
 		this.camera = Object.create(GameCamera.prototype);
-		this.camera.setup([0, 0, this.WIDTH, this.HEIGHT], [this.WIDTH/2, this.HEIGHT/2, this.WIDTH/2, this.HEIGHT/2]);
+		this.camera.setup([0, 0, this.WIDTH, this.HEIGHT], [this.WIDTH/2, this.HEIGHT/2, this.WIDTH, this.HEIGHT]);
 		
 		// CREATE THE INPUT MANAGER
 		this.inputManager = Object.create(InputManager.prototype);
@@ -83,20 +83,25 @@ var ThomasJS = {
 		for (var n=0; n < this.objectInstances.length; n++){
 			
 			// find the key so we know the object we are init-ing
-			var objType = Object.keys(this.objectInstances[n]);
-			
+			var objType = Object.keys(this.objectInstances[n])[0];
 			//runs once for each type of object -
-			/* ??? Working here - trying to get the loop instances of objType
-			for (var i=0; i < this.objectInstances[n].length; i++){
+
+				//set the object containing the object instances
+			var instArray = this.objectInstances[n][objType];
+			
+				// loop for each instance 
+			for (var i=0; i < instArray.length; i++){
 				
-				var position = Array(	this.findData(this.objectInstances, [objType[0], 1,"xPos"]),
-										this.findData(this.objectInstances, [objType[0], 1, "yPos"])
+					//pull the position values and put int on array
+				var position = Array(	this.findData(this.objectInstances, [objType, i, "xPos"]),
+										this.findData(this.objectInstances, [objType, i, "yPos"])
 									);
-				console.log ( objType + " " + i + " : " + position);
-				*/
-				this.objectFactory(objType[0], [0,0]);
-			//}
-			//console.log(this.findData(this.objectInstances, [objType[0], 1,"xPos"]));
+					// print out the objects being made
+				//console.log ( objType + " " + i + " : " + position);
+				
+					//use factory to create the instance
+				this.objectFactory(objType, position);
+			}
 		}
 		
 		 	// set the player & camera variables in the object manager
@@ -104,12 +109,6 @@ var ThomasJS = {
 			// setup the input so camera follows player
 		this.inputManager.setup(this.camera, this.player);
 		
-		
-		
-			// testing findData
-		//console.log(this.findData(["player"]));
-			//testing the factory object
-		//this.objectFactory("washingMachine", "something");
 	},
 	gameLoop: function(){
 		
@@ -134,25 +133,21 @@ var ThomasJS = {
 	findData: function(_sourceData, _targetObjects){
 		
 		var sourceData = _sourceData;	// set the initial JSON object to look into
-		//console.log("something : " + _targetObjects[0]);
 
 		for (var t =0; t < _targetObjects.length; t++){ // looping through the _targetObjects array - going down levels in the data
 			
-			// == debug comp target value === console.log("object : " + _targetObjects[t]);
 			
 			for (var i=0; i < sourceData.length; i++){ // looping through sourceData keys
 			
-			//=== debug comp sourceData value === console.log("source comparison : " + Object.keys(sourceData[i]));
 
 				if (_targetObjects[t] == Object.keys(sourceData[i])){
 					sourceData = sourceData[i][_targetObjects[t]];
-					//=== debug comp match confirm === console.log("yes");
 					break;
 				}
 			}
 		}
 		
-		// need to check against levels -- length?
+		// need to check against levels -- length in the loop - return the tree of the unfound items?
 		if (sourceData == _sourceData)
 			console.log("couldn't find '" + _targetObjects[t] + "'");
 		else
