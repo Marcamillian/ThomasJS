@@ -136,6 +136,20 @@ ObjectManager.prototype = {
 		
 		return drawObjects;
 		
+	},
+	
+	//collision stuff
+	checkCollisons: function(_objects){
+		//got the 
+		
+	},
+	
+	//overlap check
+	overlap(_objects){ //( array of objects in the frame at the moment )
+		
+		// for each object in the array
+			//  check 
+		
 	}
 	
 	
