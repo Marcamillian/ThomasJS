@@ -75,11 +75,11 @@ var ThomasJS = {
 		var background = Object.create(GameObject.prototype);
 		background.setup(this.backgroundSprite, [ 0, 0, 2400, 728] );
 		this.objManager.addObject(background);
-		
+		/*
 		var wMachine = Object.create(GameObject.prototype);
 		wMachine.setup(this.wMachineSprite, [-513, 270, 100, 100] );//, ThomasJS.getAnims("washingMachine"));
 		this.objManager.addObject(wMachine);
-		
+		*/
 		for (var n=0; n < this.objectInstances.length; n++){
 			
 			// find the key so we know the object we are init-ing
@@ -163,6 +163,17 @@ var ThomasJS = {
 				this.objManager.addObject(this.player);
 				break;
 			case "washingMachine":
+				
+				var obj = Object.create(GameObject.prototype);
+				
+				var position  = new Array( 	_position[0],
+											_position[1],
+											this.findData(this.objectData,["washingMachine", "size", "width"]),
+											this.findData(this.objectData,["washingMachine", "size", "height"])
+									);
+				obj.setup(this.wMachineSprite, position);
+				this.objManager.addObject(obj);
+				
 				break;
 			case "testObject":
 				var test = Object.create(GameObject.prototype);
