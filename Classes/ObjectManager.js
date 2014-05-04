@@ -22,6 +22,8 @@ ObjectManager.prototype = {
 		
 		// === debug ThomasJS.getData === Aconsole.log("found the item : " + ThomasJS.findData(ThomasJS.visData, ["washingMachine","anim_data","on","framerate"]));
 		
+		
+		
 		for ( var i=0; i < this.objects.length; i++){
 			this.objects[i].update(_dt);
 			//this.objects[i].draw(ctx);
@@ -145,10 +147,38 @@ ObjectManager.prototype = {
 	},
 	
 	//overlap check
-	overlap(_objects){ //( array of objects in the frame at the moment )
+	overlap: function(_objects){ //( array of objects in the frame at the moment )
 		
-		// for each object in the array
-			//  check 
+		for( var i=0; i < _objects.length ; i++){
+					
+			var col1 = _objects[i];
+			var col1HorEdge = col1.dims[2]/2;
+			var col1VerEdge = col1.dims[3]/2;
+			
+			for (var j = i+1; j> _objects.length; j++){
+				
+				var col2 = _objects[j];
+				var col2HorEdge = col2.dims[2]/2;
+				var col2VerEdge = col2.dims[3]/2;
+				
+				if( col1.dims[0]+col1HorEdge > col2.dims[0]-col2HorEdge
+					|| col1.dims[0]-col1HorEdge > col2.dims[0]+col2HorEdge){
+						
+						
+						cosole.log("horColide: " );
+					}
+				
+				
+			}		
+					// for each object in the array
+			//  Obj1:right < obj2:left
+			// obj1:left > obj2: right
+			// obj1:top < obj2 bottom
+			// obj1:bottom > obj2:top
+			// dont need to check further ones against the already processed ones
+			
+		}
+
 		
 	}
 	
